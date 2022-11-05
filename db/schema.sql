@@ -1,0 +1,2 @@
+DROP DATABASE IF EXISTS temp_db;
+CREATE DATABASE temp_db;
