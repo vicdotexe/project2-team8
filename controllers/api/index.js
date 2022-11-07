@@ -2,11 +2,13 @@ const express = require('express');
 const router = express.Router();
 
 // controllers linked in through index.js from api folder
+const artPeiceController = require('./artpeiceController')
+router.use('/artpeices', artPeiceController);
 
-// const tempController1 = require('./tempController1')
-// router.use('/temp1', tempController1);
+const commentController = require('./commentController')
+router.use('/comments', commentController);
 
-// const tempController2 = require('./tempController2')
-// router.use('/temp2', tempController2)
+const usersController = require('./usersController')
+router.use('/users', usersController);
 
 module.exports = router;
