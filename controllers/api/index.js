@@ -2,8 +2,8 @@ const express = require('express');
 const router = express.Router();
 
 // controllers linked in through index.js from api folder
-const artPeiceController = require('./artpeiceController')
-router.use('/artpeices', artPeiceController);
+const artPeiceController = require('./artpieceController')
+router.use('/artpieces', artPeiceController);
 
 const commentController = require('./commentController')
 router.use('/comments', commentController);
