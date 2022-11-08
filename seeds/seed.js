@@ -157,11 +157,6 @@ const seed = async ()=> {
         }
     ])
 
-    await users[0].addToCartAsync(artPeices[0].id);
-    await users[0].addToCartAsync(artPeices[1].id);
-
-    const item = await CartItem.findOne({where:{ArtPeiceId:1}});
-    await item.remove();
 
     console.log("seeded!")
     process.exit(0)
