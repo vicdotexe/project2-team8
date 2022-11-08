@@ -1,3 +1,36 @@
 body{
     background-color: green;
 }
+
+.user-gallery-name {
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    text-shadow: 2px 2px 5px var(--secondary);
+    border: 10px groove var(--light);
+    padding-top: 30px;
+    padding-bottom: 30px;
+    padding-right: 100px;
+    padding-left: 100px;
+  }
+
+  .artpieces-container {
+    display: flex;
+    flex-flow: column wrap;
+    align-content: flex-start;
+    align-items: center;
+  }
+
+  .card {
+    margin: 20px;
+    flex: 0 1 300px;
+    border: 7px double var(--dark);
+    border-radius: 10px;
+    background-color: var(--light);
+    color: var(--dark);
+  }
+
+  .card-body {
+    font-size: 1.4rem;
+    text-align: center;
+    font-weight: bold;
+  }

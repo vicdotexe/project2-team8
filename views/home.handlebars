@@ -1,7 +1,8 @@
-<div>
-    <h1>The Homepage</h1>
-    The main view when you come to the homepage.
-    {{#each artPieces }}
-        {{>art-preview-card this}}
+{{!-- The main view when you come to the homepage, for displaying 9 ramdom preview-cards --}}
+<section class="artpieces-container">
+  <section class="flex-row justify-center">
+    {{#each artPieces as |artPiece|}}
+    {{> art-preview-card}}
     {{/each}}
-</div>
+  </section>
+</section>

@@ -37,6 +37,11 @@ app.set('view engine', 'handlebars');
 const rootRouter = require('./controllers');
 app.use(rootRouter);
 
+app.get("/logout",(req,res)=>{
+    req.session.destroy();
+    res.send("logged out !")
+})
+
 // sync sequalize and then start express
 sequelize.sync({ force: false }).then(function() {
     app.listen(PORT, function() {
