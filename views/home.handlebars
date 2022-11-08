@@ -1,4 +1,7 @@
 <div>
     <h1>The Homepage</h1>
     The main view when you come to the homepage.
+    {{#each artPieces }}
+        {{>art-preview-card this}}
+    {{/each}}
 </div>

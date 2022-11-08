@@ -3,7 +3,6 @@ const ArtPiece = require('./ArtPiece');
 const Comment = require('./Comment');
 const Keyword = require('./Keyword');
 const ArtPieceKeyword = require('./ArtPieceKeyword.js');
-const CartItem = require('./CartItem');
 
 
 // user - artpeice
@@ -37,13 +36,6 @@ Comment.belongsTo(ArtPiece);
 ArtPiece.belongsToMany(Keyword, {through: ArtPieceKeyword})
 Keyword.belongsToMany(ArtPiece, {through: ArtPieceKeyword})
 
-// cart
-ArtPiece.belongsToMany(User,{through:CartItem})
-User.hasMany(CartItem)
-
-
-
-// 
 
 module.exports = {
     User,
