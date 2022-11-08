@@ -1,10 +1,12 @@
 const express = require('express');
-const { ArtPiece, Keyword } = require('../../models');
+const { ArtPiece, Keyword, User} = require('../../models');
 const router = express.Router();
 
 router.get("/", async(req,res)=>{
     try{
-        const artPieces = await ArtPiece.findAll();
+        const artPieces = await ArtPiece.findAll({
+            include:[Keyword,User],
+            });
         const artPiecesPlain = artPieces.map(piece => piece.get({plain:true}));
         return res.json(artPiecesPlain);
     }catch(err){
@@ -16,9 +18,12 @@ router.get("/", async(req,res)=>{
 
 router.get("/:id", async(req,res)=>{
     try{
-        const artPiece = await ArtPiece.findOne({where:{id:req.params.id},include:{model:Keyword}});
+        const artPiece = await ArtPiece.findOne({
+            where:{id:req.params.id},
+            include:[Keyword,User],
+            });
         const artPiecePlain = artPiece.get({plain:true});
-        return res.json(artPiecePlain);
+        return res.json(artPiece);
     }catch(err){
         console.log(err);
         return res.status(500).json({err:err.message})
