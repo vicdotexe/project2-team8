@@ -2,7 +2,7 @@ const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 const bcrypt = require("bcrypt");
 const CartItem = require('./CartItem');
-const ArtPeice = require('./ArtPeice');
+const ArtPiece = require('./ArtPiece');
 
 class User extends Model {
     isPasswordValid(password){
@@ -11,8 +11,8 @@ class User extends Model {
     async getCartItemsAsync(){
         return await CartItem.findAll({where:{UserId:this.id}});
     }
-    async addToCartAsync(artPeiceId){
-        return await CartItem.create({ArtPeiceId:artPeiceId, UserId:this.id})
+    async addToCartAsync(artPieceId){
+        return await CartItem.create({ArtPieceId:artPieceId, UserId:this.id})
     }
 }
 
