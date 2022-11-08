@@ -2,7 +2,7 @@ const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 const bcrypt = require("bcrypt");
 const CartItem = require('./CartItem');
-const ArtPeice = require('./ArtPeice');
+const ArtPiece = require('./ArtPiece');
 
 class User extends Model {
     isPasswordValid(password){

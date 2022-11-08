@@ -1,6 +1,6 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
-const ArtPeiceKeyword = require('./ArtPeiceKeyword');
+const ArtPeiceKeyword = require('./ArtPieceKeyword');
 const Keyword = require('./Keyword');
 
 class ArtPeice extends Model {

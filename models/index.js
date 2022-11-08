@@ -1,8 +1,8 @@
 const User = require('./User');
-const ArtPeice = require('./ArtPeice');
+const ArtPeice = require('./ArtPiece');
 const Comment = require('./Comment');
 const Keyword = require('./Keyword');
-const ArtPeiceKeyword = require('./ArtPeiceKeyword.js');
+const ArtPeiceKeyword = require('./ArtPieceKeyword.js');
 const CartItem = require('./CartItem');
 
 
