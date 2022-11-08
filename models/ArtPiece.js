@@ -2,6 +2,7 @@ const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 const ArtPieceKeyword = require('./ArtPieceKeyword');
 const Keyword = require('./Keyword');
+const moment = require('moment');
 
 class ArtPiece extends Model {
     async addKeywordsAsync(keywords){
@@ -12,7 +13,7 @@ class ArtPiece extends Model {
         }
     }
     async resetKeywordsAsync(keywords){
-        await ArtPeiceKeyword.destroy({where:{ArtieiceId:this.id}});
+        await ArtPieceKeyword.destroy({where:{ArtPieceId:this.id}});
         await this.addKeywordsAsync(keywords);
     }
     async getKeywordsPlainAsync(){
@@ -53,9 +54,6 @@ ArtPiece.init({
     },
     description: {
         type: DataTypes.TEXT
-    },
-    price:{
-        type: DataTypes.DECIMAL
     },
     createdAt: {
        type: DataTypes.DATE,                 
