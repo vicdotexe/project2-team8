@@ -6,7 +6,7 @@ router.get("/", async(req,res)=>{
     try{
         const artPieces = await ArtPiece.findAll();
         const artPiecesPlain = artPieces.map(piece => piece.get({plain:true}));
-        return res.json(artPieces);
+        return res.json(artPiecesPlain);
     }catch(err){
         console.log(err);
         return res.status(500).json({err:err.message})

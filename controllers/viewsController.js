@@ -5,10 +5,7 @@ const sequelize = require('sequelize');
 
 router.get('/home', async (req,res)=>{
 
-    const allPieces = await ArtPiece.findAll({
-        limit:12,
-        order:sequelize.literal('updatedAt, DESC')
-    })
+    const allPieces = await ArtPiece.findAll();
 
     let passedInObject = {
         artPieces: allPieces.map(piece=>piece.get({plain:true}))
