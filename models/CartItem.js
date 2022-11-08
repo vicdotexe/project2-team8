@@ -1,6 +1,5 @@
 const { Model, DataTypes} = require('sequelize');
 const sequelize = require('../config/connection');
-const moment = require('moment');
 
 class CartItem extends Model {
     async remove(){

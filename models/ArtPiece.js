@@ -1,29 +1,29 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
-const ArtPeiceKeyword = require('./ArtPeiceKeyword');
+const ArtPieceKeyword = require('./ArtPieceKeyword');
 const Keyword = require('./Keyword');
 
-class ArtPeice extends Model {
+class ArtPiece extends Model {
     async addKeywordsAsync(keywords){
         for (let i = 0; i < keywords.length; i++){
             let [kw,created] = await Keyword.findOrCreate({where:{name:keywords[i]}});
             let id = kw.id;
-            await ArtPeiceKeyword.create({ArtPeiceId: this.id, KeywordId: id})
+            await ArtPieceKeyword.create({ArtPieceId: this.id, KeywordId: id})
         }
     }
     async resetKeywordsAsync(keywords){
-        await ArtPeiceKeyword.destroy({where:{ArtPeiceId:this.id}});
+        await ArtPeiceKeyword.destroy({where:{ArtieiceId:this.id}});
         await this.addKeywordsAsync(keywords);
     }
     async getKeywordsPlainAsync(){
-        const namesData = await ArtPeice.findOne({
+        const namesData = await ArtPiece.findOne({
             attributes:['Keywords.name'],
             where:{
             id: this.id
             },
             include:{
                 model:Keyword,
-                through:ArtPeiceKeyword,
+                through:ArtPieceKeyword,
                 attributes:{
                     include:['name'],
                     exclude:'ArtPeiceKeyword'
@@ -35,13 +35,13 @@ class ArtPeice extends Model {
     }
 
     async addCommentAsync(comment,fromUserId){
-        return await Comment.create({UserId:fromUserId, conent:comment, ArtPeiceId:this.id})
+        return await Comment.create({UserId:fromUserId, conent:comment, ArtPieceId:this.id})
     }
 
     
 }
 
-ArtPeice.init({
+ArtPiece.init({
     // add properites here, ex:
     name: {
          type: DataTypes.STRING,
@@ -73,4 +73,4 @@ ArtPeice.init({
     sequelize
 });
 
-module.exports=ArtPeice
+module.exports=ArtPiece
