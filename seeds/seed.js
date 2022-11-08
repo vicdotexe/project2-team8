@@ -1,7 +1,7 @@
 const sequelize = require("../config/connection");
 const {User,ArtPiece,Comment,Genre,Keyword} = require("../models/");
 const CartItem = require("../models/CartItem");
-const {User,Comment,Keyword, ArtPiece} = require("../models/");
+// const {User,Comment,Keyword, ArtPiece} = require("../models/");
 
 const seed = async ()=> {
     await sequelize.sync({force:true});
