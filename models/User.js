@@ -11,8 +11,8 @@ class User extends Model {
     async getCartItemsAsync(){
         return await CartItem.findAll({where:{UserId:this.id}});
     }
-    async addToCartAsync(artPeiceId){
-        return await CartItem.create({ArtPeiceId:artPeiceId, UserId:this.id})
+    async addToCartAsync(artPieceId){
+        return await CartItem.create({ArtPieceId:artPieceId, UserId:this.id})
     }
 }
 

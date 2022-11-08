@@ -1,6 +1,7 @@
 const sequelize = require("../config/connection");
 const {User,ArtPiece,Comment,Genre,Keyword} = require("../models/");
 const CartItem = require("../models/CartItem");
+const {User,Comment,Keyword, ArtPiece} = require("../models/");
 
 const seed = async ()=> {
     await sequelize.sync({force:true});
@@ -132,7 +133,7 @@ const seed = async ()=> {
 
 
     
-    artPieces.forEach(async(artPiece)=>{
+    artPeices.forEach(async(artPeice)=>{
         //randomly pull 3-5 words from a master-list of possible keywords
         const keywordArray = [];
         await artPiece.addKeywordsAsync(keywordArray);
@@ -156,10 +157,10 @@ const seed = async ()=> {
         }
     ])
 
-    await users[0].addToCartAsync(artPieces[0].id);
-    await users[0].addToCartAsync(artPieces[1].id);
+    await users[0].addToCartAsync(artPeices[0].id);
+    await users[0].addToCartAsync(artPeices[1].id);
 
-    const item = await CartItem.findOne({where:{ArtPieceId:1}});
+    const item = await CartItem.findOne({where:{ArtPeiceId:1}});
     await item.remove();
 
     console.log("seeded!")

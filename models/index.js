@@ -1,19 +1,19 @@
 const User = require('./User');
-const ArtPeice = require('./ArtPiece');
+const ArtPiece = require('./ArtPiece');
 const Comment = require('./Comment');
 const Keyword = require('./Keyword');
-const ArtPeiceKeyword = require('./ArtPieceKeyword.js');
+const ArtPieceKeyword = require('./ArtPieceKeyword.js');
 const CartItem = require('./CartItem');
 
 
 // user - artpeice
-User.hasMany(ArtPeice, {
+User.hasMany(ArtPiece, {
     onDelete:"CASCADE",
     foreignKey:{
         allowNull:false
     }
 });
-ArtPeice.belongsTo(User);
+ArtPiece.belongsTo(User);
 
 // user - comment
 User.hasMany(Comment, {
@@ -25,20 +25,20 @@ User.hasMany(Comment, {
 Comment.belongsTo(User);
 
 // artpeice - comment
-ArtPeice.hasMany(Comment, {
+ArtPiece.hasMany(Comment, {
     onDelete:"CASCADE",
     foreignKey:{
         allowNull:false
     }
 });
-Comment.belongsTo(ArtPeice);
+Comment.belongsTo(ArtPiece);
 
 // kewords
-ArtPeice.belongsToMany(Keyword, {through: ArtPeiceKeyword})
-Keyword.belongsToMany(ArtPeice, {through: ArtPeiceKeyword})
+ArtPiece.belongsToMany(Keyword, {through: ArtPieceKeyword})
+Keyword.belongsToMany(ArtPiece, {through: ArtPieceKeyword})
 
 // cart
-ArtPeice.belongsToMany(User,{through:CartItem})
+ArtPiece.belongsToMany(User,{through:CartItem})
 User.hasMany(CartItem)
 
 
@@ -47,8 +47,8 @@ User.hasMany(CartItem)
 
 module.exports = {
     User,
-    ArtPeice,
+    ArtPiece,
     Comment,
     Keyword,
-    ArtPeiceKeyword
+    ArtPieceKeyword
 }

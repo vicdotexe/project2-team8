@@ -1,9 +1,9 @@
 const { Model, DataTypes} = require('sequelize');
 const sequelize = require('../config/connection');
 
-class ArtPeiceKeyword extends Model {}
+class ArtPieceKeyword extends Model {}
 
-ArtPeiceKeyword.init({
+ArtPieceKeyword.init({
     // add properites here, ex:
     id: {
         type: DataTypes.INTEGER,
@@ -17,4 +17,4 @@ ArtPeiceKeyword.init({
     updatedAt: false
 });
 
-module.exports=ArtPeiceKeyword
+module.exports=ArtPieceKeyword
