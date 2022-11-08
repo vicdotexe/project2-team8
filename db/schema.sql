@@ -1,2 +1,2 @@
-DROP DATABASE IF EXISTS temp_db;
-CREATE DATABASE temp_db;
+DROP DATABASE IF EXISTS renegade_db;
+CREATE DATABASE renegade_db;
