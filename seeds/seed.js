@@ -70,63 +70,63 @@ const seed = async ()=> {
             UserId: 8
         },
         {
-            name:"", 
-            path: "", 
+            name:"Poppies in a Field", 
+            path: "https://www.biographyonline.net/wp-content/uploads/2014/05/Claude_Monet_-_Poppy_Field.jpg.webp", 
             UserId: 9
         },
         {
-            name:"", 
-            path: "", 
+            name:"Guardian Angel", 
+            path: "https://images.fineartamerica.com/images/artworkimages/mediumlarge/1/guardian-angel-roy-pedersen.jpg", 
             UserId: 10
         },
         {
-            name:"", 
-            path: "", 
+            name:"French Theater Square", 
+            path: "https://images.rawpixel.com/image_1300/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIyLTA1L3BkMjI0LXBkcGlzc2Fycm8wMDI3My1pbWFnZS5qcGc.jpg", 
             UserId: 11
         },
         {
-            name:"", 
-            path: "", 
+            name:"Rich Port", 
+            path: "https://images.rawpixel.com/image_1300/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvbHIvcGRmbWE0LXBkcGF1bGtsZWUwMDAyMC1pbWFnZS5qcGc.jpg", 
             UserId: 12
         },
         {
-            name:"", 
-            path: "", 
+            name:"Bridge to Eternity", 
+            path: "https://images.fineartamerica.com/images/artworkimages/mediumlarge/1/bridge-to-eternity-michael-lang.jpg", 
             UserId: 13
         },
         {
-            name:"", 
-            path: "", 
+            name:"Nature Walk In Ridgefield Washington", 
+            path: "https://images.fineartamerica.com/images/artworkimages/mediumlarge/1/nature-walk-ridgefield-washington-jim-gola.jpg", 
             UserId: 14
         },
         {
-            name:"", 
-            path: "", 
+            name:"Alone Now", 
+            path: "https://images.fineartamerica.com/images-medium-large-5/original-landscape-art-birds-painting--alone-now-amy-giacomelli.jpg", 
             UserId: 15
         },
         {
-            name:"", 
-            path: "", 
+            name:"The Persistence of Memory", 
+            path: "https://i0.wp.com/bookmypainting.com/wp-content/uploads/2019/06/the-persistence-of-memory-the-famous-painting-2.jpeg?resize=566%2C430&ssl=1", 
             UserId: 16
         },
         {
-            name:"", 
-            path: "", 
+            name:"No. 5, 1948", 
+            path: "https://i0.wp.com/bookmypainting.com/wp-content/uploads/2019/06/no-5-1948-2.jpeg?resize=519%2C292&ssl=1", 
             UserId: 17
         },
         {
-            name:"", 
-            path: "", 
+            name:"A Sunday Afternoon on the Island of La Grande Jatte", 
+            path: "https://i0.wp.com/bookmypainting.com/wp-content/uploads/2019/06/a-sunday-afternoon-on-the-island-of-la-grande-jatt-2.jpeg?resize=596%2C397&ssl=1", 
             UserId: 18
         },
         {
-            name:"", 
-            path: "", 
+            name:"The Triumph of Galatea", 
+            path: "https://i0.wp.com/bookmypainting.com/wp-content/uploads/2019/06/the-triumph-of-galatea-1.jpeg?resize=508%2C682&ssl=1", 
             UserId: 19
         },
         {
-            name:"", 
-            path: "", 
+            name:"Dogs Playing Poker", 
+            path: "https://i0.wp.com/bookmypainting.com/wp-content/uploads/2019/06/dogs-playing-poker-2.jpeg?resize=603%2C361&ssl=1", 
             UserId: 20
         },
     ])
