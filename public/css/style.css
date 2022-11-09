@@ -8,11 +8,13 @@ body{
   background: black;
 }
 
-  .artpieces-container {
+  #artpieces-container {
     display: flex;
     flex-flow: wrap;
-    align-content:center;
+    justify-content: center;
+    align-items:center;
   }
+
   .user-gallery-name {
     width: 100%;
     font-size: xxx-large;  
@@ -28,16 +30,11 @@ body{
     margin: 10px;
   }
 
-  .artpieces {
-    width: 100%;
-    display:flex;
-    flex-wrap: wrap;
-  }
 
   .card {
     font-size: 1 rem;
     text-align: center;
-    width: 30%;
+    width: 400px;
     margin: 20px;
     border: 7px double var(--dark);
     border-radius: 10px;
@@ -54,8 +51,10 @@ body{
     height:100%;
    }
 
-  #img-part{
+ .img-part{
     margin:5%;
+    height: 225px;
+    width: auto;
   }
 
   p{
