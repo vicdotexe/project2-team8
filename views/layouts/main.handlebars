@@ -10,33 +10,41 @@
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/art-piece.css">
 </head>
-<body class="p-0">
+<body class="h-screen flex flex-col">
  
 <nav class="flex flex-col bg-gray-300 m-0">
   <h1 class="m-4 text-black text-4xl">Renegade Art</h1>
-  <ul id="navLinks" class="flex mb-2">
-      <li class="nav-item">
-        <a class="nav-link" href="/home">Browse</a>
-      </li>
-      {{#if activeUser}}
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/dashboard">{{activeUser.username}} Dashboard</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/logout">Logout</a>
-      </li>
-      {{else}}
-      <li class="nav-item">
-        <a class="nav-link" href="/signin">Login</a>
-      </li>
-      {{/if}}
-  </ul>
+  <div class="flex flex-wrap justify-between m-2">
+    <ul id="navLinks" class="flex">
+        <li class="nav-item">
+          <a class="nav-link" href="/home">Browse</a>
+        </li>
+        {{#if activeUser}}
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/dashboard">{{activeUser.username}} Dashboard</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/logout">Logout</a>
+        </li>
+        {{else}}
+        <li class="nav-item">
+          <a class="nav-link" href="/signin">Login</a>
+        </li>
+        {{/if}}
+    </ul>
+    <div class="m-2">
+      <input type="text">
+      <button>Search</button>
+    </div>
+  </div>
+  
 </nav>
 
 
     {{!-- all views will be redered into the 'body' --}}
       {{{body}}}
+      
 
     
 </body>

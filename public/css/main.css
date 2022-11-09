@@ -3,8 +3,11 @@
 
 }
 
-.nav-link{
+.nav-item{
 margin: 1rem;
+}
+.nav-link{
+    white-space: nowrap;
 }
 
 .nav-link:hover{
