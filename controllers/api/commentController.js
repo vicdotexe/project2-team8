@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const {Comment} = require('../../models')
 
 router.get('/', async(req,res)=>{
     try{
@@ -19,15 +20,18 @@ router.get('/:id', async(req,res)=>{
     }
 })
 
-router.post('/:id', async(req,res)=>{
+router.post('/', async(req,res)=>{
     if (!req.session.activeUser){
         return res.status(401).json({message:"Must be logged in to comment."})
     }
+    // if (!req.body.content || ! req.body.artId){
+    //     return res.status(401).json({message:"Must have content and associated artId"})
+    // }
     try{
         const newcommentData = await Comment.create({
             content:req.body.content,
             UserId: req.session.activeUser.id,
-            ArtPieceId: req.params.id
+            ArtPieceId: req.body.artId
         });
         res.json(newcommentData);
     }catch(err){
