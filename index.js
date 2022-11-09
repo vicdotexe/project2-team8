@@ -3,6 +3,7 @@ const exphbs = require('express-handlebars');
 const sequelize = require('./config/connection');
 const session = require("express-session")
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
+const path = require('path');
 
 // Set up the Express App
 const app = express();
@@ -27,7 +28,7 @@ app.use(session({
 }))
 
 // Set the static directory
-app.use(express.static('public'));
+app.use('/',express.static(path.join(__dirname,'public')));
 
 // Create handlebars engine, add it to express, and set it as the view engine.
 const hbs = exphbs.create({});

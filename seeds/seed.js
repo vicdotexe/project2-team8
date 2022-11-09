@@ -1,5 +1,17 @@
 const sequelize = require("../config/connection");
 const {User,ArtPiece,Comment} = require("../models/");
+const LoremIpsum = require("lorem-ipsum").LoremIpsum;
+
+const lorem = new LoremIpsum({
+  sentencesPerParagraph: {
+    max: 8,
+    min: 4
+  },
+  wordsPerSentence: {
+    max: 16,
+    min: 4
+  }
+});
 
 const seed = async ()=> {
     await sequelize.sync({force:true});
@@ -128,6 +140,9 @@ const seed = async ()=> {
             UserId: 4
         },
     ])
+
+
+    await ArtPiece.update({description: "randDescription"}, {where:{description:null}});
 
 
     const comments = await Comment.bulkCreate([
