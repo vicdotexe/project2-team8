@@ -12,7 +12,7 @@
 <body class="min-vw-100 min-vh-100">
  
 <nav class="navbar navbar-light bg-light">
-  <span class="navbar-brand mb-0 h1">Renegade Art
+  <span class="navbar-brand mb-0 h1">Renegade Art</span>
 </nav>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <a class="navbar-brand" href="#"></a>
@@ -26,8 +26,9 @@
         <a class="nav-link" href="/home">Browse <span class="sr-only">(current)</span></a>
       </li>
       {{#if activeUser}}
+      </li>
       <li class="nav-item">
-        <a class="nav-link" href="/dashboard">{{activeUser.username}}'s Dashboard</a>
+        <a class="nav-link" href="/dashboard">{{activeUser.username}} Dashboard</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="/logout">Logout</a>
@@ -37,7 +38,7 @@
         <a class="nav-link" href="/signin">Login</a>
       </li>
       {{/if}}
-      <li class="nav-item dropdown">
+      {{!-- <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Artists
         </a>
@@ -61,7 +62,7 @@
           <a class="dropdown-item" href="#">Charcoal</a>
           <a class="dropdown-item" href="#">Pastel</a>
         </div>
-      </li>
+      </li> --}}
     </ul>
     <form class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">

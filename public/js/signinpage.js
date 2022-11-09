@@ -16,7 +16,7 @@ document.querySelector('#signInButton').addEventListener("click", (e)=>{
             })
         }).then(response=>{
             if (response.ok){
-                document.location.replace('/home');
+                document.location.replace('/dashboard');
                 return null;
             }
             return response.json();
@@ -52,7 +52,7 @@ document.querySelector('#signUpButton').addEventListener("click", (e)=>{
             })
         }).then(response=>{
             if (response.ok){
-                document.location.replace('/home');
+                alert("Account created")
                 return null;
             }
             return response.json();
