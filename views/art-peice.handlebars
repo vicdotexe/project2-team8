@@ -1,19 +1,23 @@
 <div class="art-piece">
     <div class="main-image">
-        <img src="{{path}}" > The main view for a single peice of art.
+        <img src="{{artPiece.path}}" > The main view for a single peice of art.
     </div>
 
     <div class="image-info">
-        <h3 class="artist-name">Artist:{{artist}}</h3>
+        <h3 class="artist-name">Artist:{{artPiece.artist}}</h3>
         <h3 class="art-name">Piece name: </h3>
-        <h3>Genre of art:{{genre}}</h3>
+        <h3>Genre of art:{{artPiece.genre}}</h3>
     </div>
     <div class="art-description">Description by artist:<ul>
             <li>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Necessitatibus natus dolor at quidem totam optio dignissimos vitae. Sapiente vitae veniam veritatis ducimus similique beatae, aperiam iusto praesentium itaque culpa repellendus.</li>
             
-        </ul>{{description}}</div>
+        </ul>{{artPiece.description}}</div>
 
-    <div>Keywords to search by:{{keyword}}{{keyword}}{{keyword}}</div>
+    <div>Keywords:
+        {{#each artPiece.Keywords as |keyword|}}
+        {{keyword.name}}
+        {{/each}}
+        </div>
 
     <div class="input-group">
     <div class="input-group-prepend">
