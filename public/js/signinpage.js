@@ -16,7 +16,7 @@ document.querySelector('#signInButton').addEventListener("click", (e)=>{
             })
         }).then(response=>{
             if (response.ok){
-                document.location.replace('/home');
+                document.location.replace('/dashboard');
                 return null;
             }
             return response.json();
@@ -33,4 +33,37 @@ document.querySelector('#signUpButton').addEventListener("click", (e)=>{
     e.preventDefault();
     const password = document.querySelector('#username').value;
     const username = document.querySelector('#password').value;
+
+    if (password && username){
+        if (password.length < 8){
+            alert("Password must be atleast 8 characters")
+            return;
+        }
+
+        console.log(username,password)
+        fetch('/api/users', {
+            method: 'POST',
+            headers:{
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                username:username,
+                password:password
+            })
+        }).then(response=>{
+            if (response.ok){
+                alert("Account created")
+                return null;
+            }
+            return response.json();
+        }).then(data=>{
+            if (data){
+                alert(data.message);
+            }
+    
+        });
+    }else{
+        alert("Password and username fields must be filled out.")
+    }
 })
+
