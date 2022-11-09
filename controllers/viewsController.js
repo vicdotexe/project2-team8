@@ -7,6 +7,7 @@ router.get('/home', async (req,res)=>{
 
     try{
         const allPieces = await ArtPiece.findAll({
+            include:[User,Keyword],
             order:sequelize.literal('updatedAt DESC')
         });
 
@@ -28,7 +29,7 @@ router.get('/artpiece/:id', async (req,res)=>{
     try{
         const artPiece = await ArtPiece.findOne({
             where:{id:req.params.id},
-            include:[Keyword,User],
+            include:[Keyword,User,Comment],
             });
         const passedInObject = {
             activeUser: req.session.activeUser,
@@ -45,6 +46,7 @@ router.get('/dashboard', async(req,res)=>{
     if (req.session.activeUser){
         const myPieces = await ArtPiece.findAll({
             where:{UserId:req.session.activeUser.id},
+            include:[User,Keyword],
             order:sequelize.literal('updatedAt DESC')
         })
         const passedInObject = {
@@ -66,6 +68,7 @@ router.get('/gallery/:id', async(req,res)=>{
         }
         const allPieces = await ArtPiece.findAll({
             where:{UserId:req.params.id},
+            include:[User,Keyword],
             order:sequelize.literal('updatedAt DESC')
         });
         const passedInObject = {

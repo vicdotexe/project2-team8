@@ -1,10 +1,6 @@
-<<<<<<< HEAD
 body{
-    background-color:black;
+  background: black;
 }
-=======
->>>>>>> 7968656edee2bbbef88cc643a57f6c480524ea02
-
 .user-gallery-name {
     text-transform: uppercase;
     letter-spacing: 3px;
