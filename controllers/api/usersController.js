@@ -26,6 +26,19 @@ router.get("/:id", async(req,res)=>{
     }
 })
 
+router.post('/', async(req,res)=>{
+    try{
+        const newUserData = await User.create(req.body);
+        req.session.activeUser = {
+            username:req.body.username,
+            id: newUserData.id
+        }
+        res.status(201).json(newUserData);
+    }catch(err){
+        res.status(500).json({message:"That username is taken."})
+    }
+})
+
 router.post('/login', async(req,res)=>{
     const user = await User.findOne({where:{username:req.body.username}});
     if (!user){
