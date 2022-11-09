@@ -1,0 +1,42 @@
+.art-piece {
+    text-align: center;
+}
+
+.input-group {
+    justify-content: center;
+}
+
+.image-info {
+    display: flex;
+    justify-content: center;
+}
+
+.image-info h3 {
+    padding: 0 15px;
+}
+
+.recent-comments {
+    width: 80vw;
+    margin: 0 auto;
+    background: pink;
+}
+
+.recent-comments ul {
+    list-style: none;
+}
+
+.recent-comments li {
+    padding: 15px 0;
+}
+.art-description ul {
+    list-style: none;
+}
+
+.art-description li {
+    padding: 15px 0;
+}
+.art-description {
+    width: 80vw;
+    margin: 0 auto;
+    background: rgb(247, 63, 93);
+}

@@ -1,0 +1,2 @@
+DROP DATABASE IF EXISTS renegade_db;
+CREATE DATABASE renegade_db;

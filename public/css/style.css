@@ -1,0 +1,62 @@
+body{
+  background: black;
+}
+.user-gallery-name {
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    text-shadow: 2px 2px 5px var(--secondary);
+    border: 10px groove var(--light);
+    padding-top: 30px;
+    padding-bottom: 30px;
+    padding-right: 100px;
+    padding-left: 100px;
+  }
+
+  .artpieces-container {
+    display: flex;
+    flex-flow: wrap;
+    align-content:center;
+  }
+
+  .artpieces {
+    width: 100%;
+    display:flex;
+    flex-wrap: wrap;
+  }
+
+  .card {
+    width: 30%;
+    margin: 20px;
+    border: 7px double var(--dark);
+    border-radius: 10px;
+    background-color: whitesmoke;
+    color: black;
+  }
+
+  .card-body {
+    font-size: 1 rem;
+    text-align: center;
+  }
+
+  img {
+   max-width: 100%;
+   height:auto;
+  }
+
+  a {
+    color: black;
+    text-decoration: none; 
+  }
+
+  .signInBox{
+    color:whitesmoke;
+    font:bold;
+    border-radius: 8px;
+  }
+  #signUpButton{
+    border-radius: 5px;
+  }
+
+  #signInButton{
+    border-radius: 5px;
+  }
