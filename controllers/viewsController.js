@@ -1,5 +1,5 @@
 const express = require('express');
-const { ArtPiece } = require('../models');
+const { ArtPiece, User, Keyword } = require('../models');
 const router = express.Router();
 const sequelize = require('sequelize');
 
@@ -11,6 +11,19 @@ router.get('/home', async (req,res)=>{
         artPieces: allPieces.map(piece=>piece.get({plain:true}))
     }
     res.render('home', passedInObject)
+})
+router.get('/artpiece/:id', async (req,res)=>{
+
+    try{
+        const artPiece = await ArtPiece.findOne({
+            where:{id:req.params.id},
+            include:[Keyword,User],
+            });
+        return res.render('art-peice', artPiece)
+    }catch(err){
+        console.log(err);
+        return res.status(500).json({err:err.message})
+    }
 })
 
 router.get('/')

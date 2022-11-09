@@ -1,3 +1,36 @@
-<div>
-    The main view for a single peice of art.
+<div class="art-piece">
+    <div class="main-image">
+        <img src={{path}} >    The main view for a single peice of art.
+    </div>
+
+    <div class="image-info">
+        <h3 class="artist-name">Artist:{{artist}}</h3>
+        <h3 class="art-name">Piece name: </h3>
+        <h3>Genre of art:{{genre}}</h3>
+    </div>
+    <div class="art-description">Description by artist:<ul>
+            <li>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Necessitatibus natus dolor at quidem totam optio dignissimos vitae. Sapiente vitae veniam veritatis ducimus similique beatae, aperiam iusto praesentium itaque culpa repellendus.</li>
+            
+        </ul>{{description}}</div>
+
+    <div>Keywords to search by:{{keyword}}{{keyword}}{{keyword}}</div>
+
+    <div class="input-group">
+    <div class="input-group-prepend">
+        <textarea class="form-control" aria-label="With textarea"></textarea>
+        <button class="input-group-text">Comment on this piece</button>
+    </div>
+    </div>
+
+    <input type="button" class="btn btn-primary" type="submit" value="Like?">
+
+    <div class="recent-comments">Recent comments:
+        <ul>
+            <li>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Necessitatibus natus dolor at quidem totam optio dignissimos vitae. Sapiente vitae veniam veritatis ducimus similique beatae, aperiam iusto praesentium itaque culpa repellendus.</li>
+            <li>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Necessitatibus natus dolor at quidem totam optio dignissimos vitae. Sapiente vitae veniam veritatis ducimus similique beatae, aperiam iusto praesentium itaque culpa repellendus.</li>
+            <li>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Necessitatibus natus dolor at quidem totam optio dignissimos vitae. Sapiente vitae veniam veritatis ducimus similique beatae, aperiam iusto praesentium itaque culpa repellendus.</li>
+            <li>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Necessitatibus natus dolor at quidem totam optio dignissimos vitae. Sapiente vitae veniam veritatis ducimus similique beatae, aperiam iusto praesentium itaque culpa repellendus.</li>
+            {{comments}}
+        </ul>
+    </div>
 </div>
