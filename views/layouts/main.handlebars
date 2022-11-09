@@ -13,12 +13,6 @@
  
 <nav class="navbar navbar-light bg-light">
   <span class="navbar-brand mb-0 h1">Renegade Art
-    {{#if activeUser}}
-    <span>Welcome {{activeUser.username}}</span>
-    <a href="/logout"><button type="button" class="btn btn-link">Log Out</button></a></span>
-    {{else}}
-    <a href="/signin"><button type="button" class="btn btn-link">Sign In</button></a></span>
-    {{/if}}
 </nav>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <a class="navbar-brand" href="#"></a>
@@ -29,14 +23,20 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="/home">Browse <span class="sr-only">(current)</span></a>
+      </li>
+      {{#if activeUser}}
+      <li class="nav-item">
+        <a class="nav-link" href="/dashboard">{{activeUser.username}}'s Dashboard</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Most Recent Pieces</a>
+        <a class="nav-link" href="/logout">Logout</a>
       </li>
+      {{else}}
       <li class="nav-item">
-        <a class="nav-link" href="#">Oldest Pieces</a>
+        <a class="nav-link" href="/signin">Login</a>
       </li>
+      {{/if}}
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Artists
