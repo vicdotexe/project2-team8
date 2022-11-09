@@ -13,7 +13,6 @@ router.get('/home', async (req,res)=>{
     }
     res.render('home', passedInObject)
 })
-
 router.get('/artpiece/:id', async (req,res)=>{
 
     try{
