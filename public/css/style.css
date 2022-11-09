@@ -1,4 +1,6 @@
-
+body{
+  background: black;
+}
 .user-gallery-name {
     text-transform: uppercase;
     letter-spacing: 3px;
