@@ -1,11 +1,12 @@
 <section class="card">
   <a href="/artPiece/{{id}}" >
-    <div class="card-body flex-row justify-center">
+    <div id="img-part">
       <img src="{{path}}" alt="{{description}}">
+    </div>
+    <div id="info">
       <p>{{name}}</p>
-      
-      <p>By: {{User.username}}</p> Created: {{createdAt}} </p>
-
+      <a href="/gallery/{{User.id}}">
+      <p>By {{User.username}}</p> </a> Created: {{createdAt}} </p>
     </div>
   </a>
 </section>
