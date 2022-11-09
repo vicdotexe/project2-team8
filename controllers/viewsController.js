@@ -20,7 +20,7 @@ router.get('/artpiece/:id', async (req,res)=>{
             where:{id:req.params.id},
             include:[Keyword,User],
             });
-        return res.render('art-peice', artPiece)
+        return res.render('art-peice', artPiece.get({plain:true}))
     }catch(err){
         console.log(err);
         return res.status(500).json({err:err.message})
