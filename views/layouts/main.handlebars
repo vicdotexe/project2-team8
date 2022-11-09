@@ -5,25 +5,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/css/main.css">
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/art-piece.css">
 </head>
-<body class="min-vw-100 min-vh-100">
+<body class="p-0">
  
-<nav class="navbar navbar-light bg-light">
-  <span class="navbar-brand mb-0 h1">Renegade Art</span>
-</nav>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#"></a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="/home">Browse <span class="sr-only">(current)</span></a>
+<nav class="flex flex-col bg-gray-300 m-0">
+  <h1 class="m-4 text-black text-4xl">Renegade Art</h1>
+  <ul id="navLinks" class="flex mb-2">
+      <li class="nav-item">
+        <a class="nav-link" href="/home">Browse</a>
       </li>
       {{#if activeUser}}
       </li>
@@ -38,45 +31,13 @@
         <a class="nav-link" href="/signin">Login</a>
       </li>
       {{/if}}
-      {{!-- <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Artists
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Juan Pedro</a>
-          <a class="dropdown-item" href="#">Koa</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Stella!!!</a>
-        </div>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Genres
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Digital</a>
-          <a class="dropdown-item" href="#">Photography</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Painting</a>
-          <a class="dropdown-item" href="#">Pencil</a>
-          <a class="dropdown-item" href="#">Charcoal</a>
-          <a class="dropdown-item" href="#">Pastel</a>
-        </div>
-      </li> --}}
-    </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
-  </div>
+  </ul>
 </nav>
+
 
     {{!-- all views will be redered into the 'body' --}}
       {{{body}}}
 
     
 </body>
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </html>
