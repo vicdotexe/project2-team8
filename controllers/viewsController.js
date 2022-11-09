@@ -27,20 +27,6 @@ router.get('/artpiece/:id', async (req,res)=>{
     }
 })
 
-router.get('/artpiece/:id', async (req,res)=>{
-
-    try{
-        const artPiece = await ArtPiece.findOne({
-            where:{id:req.params.id},
-            include:[Keyword,User],
-            });
-        return res.render('art-peice', artPiece)
-    }catch(err){
-        console.log(err);
-        return res.status(500).json({err:err.message})
-    }
-})
-
 router.get('/signin',(req,res)=>{
     res.render('signin');
 })
