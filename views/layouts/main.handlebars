@@ -9,15 +9,16 @@
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/art-piece.css">
 </head>
-<body>
+<body class="min-vw-100 min-vh-100">
  
 <nav class="navbar navbar-light bg-light">
-  <span class="navbar-brand mb-0 h1">Renegade Art</span>
-  <div class="nav-buttons">
-     <button type="button" class="btn btn-link">Sign In</button>
-    <button type="button" class="btn btn-link">Sign Up!</button>
-    <button type="button" class="btn btn-link">Log Out</button>
-  </div>
+  <span class="navbar-brand mb-0 h1">Renegade Art
+    {{#if activeUser}}
+    <span>Welcome {{activeUser.username}}</span>
+    <a href="/logout"><button type="button" class="btn btn-link">Log Out</button></a></span>
+    {{else}}
+    <a href="/signin"><button type="button" class="btn btn-link">Sign In</button></a></span>
+    {{/if}}
 </nav>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <a class="navbar-brand" href="#"></a>
@@ -70,7 +71,8 @@
 </nav>
 
     {{!-- all views will be redered into the 'body' --}}
-    {{{body}}}
+      {{{body}}}
+
     
 </body>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
