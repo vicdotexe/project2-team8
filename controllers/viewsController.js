@@ -29,12 +29,16 @@ router.get('/artpiece/:id', async (req,res)=>{
     try{
         const artPiece = await ArtPiece.findOne({
             where:{id:req.params.id},
-            include:[Keyword,User,Comment],
+            include:[Keyword,User,{
+                model:Comment,
+                include:User
+            }],
             });
         const passedInObject = {
             activeUser: req.session.activeUser,
             artPiece: artPiece.get({plain:true})
         }
+        console.log(passedInObject);
         return res.render('art-peice', passedInObject)
     }catch(err){
         console.log(err);
