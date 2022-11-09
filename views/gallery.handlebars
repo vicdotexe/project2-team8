@@ -1,7 +1,7 @@
 {{!-- The main view for displaying preview-cards of art peices of a certain user. --}}
 
 <section class="artpieces-container">
-  <h3 class="user-gallery-name">{{galleryOwner.username}}</h3>
+  <div class="user-gallery-name">{{galleryOwner.username}}</div>
   <section class="artpieces">
     <!-- For each artPiece that belongs to this User, the art-preview-card partial is used to render each artpiece's data -->
     {{#each artPieces as |artPiece|}}

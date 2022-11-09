@@ -1,5 +1,5 @@
 const express = require('express');
-const { ArtPiece,Keyword,User } = require('../models');
+const { ArtPiece,Keyword,User,Comment } = require('../models');
 const router = express.Router();
 const sequelize = require('sequelize');
 
