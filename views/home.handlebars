@@ -1,8 +1,6 @@
 {{!-- The main view when you come to the homepage, for displaying 9 ramdom preview-cards --}}
-<section id="flex w-full h-full">
+<section class="flex w-full h-full flex-wrap justify-around">
     {{#each artPieces as |artPiece|}}
-
         {{> art-preview-card artPiece}}
-
     {{/each}}
 </section>
