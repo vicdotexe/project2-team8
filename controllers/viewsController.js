@@ -58,28 +58,44 @@ router.get('/artpiece/:id', async (req,res)=>{
 router.get('/search', async(req,res)=>{
     console.log("SEARCHED");
     console.log(req.query);
-    if (!req.query.keywords){
+    if (!req.query.keywords && !req.query.likedby){
         return res.redirect('/home')
     }
-
-    const keywords = req.query.keywords.split(' ');
-    console.log(keywords)
-
     try{
-        const allPieces = await ArtPiece.findAll({
+        let title = [];
+        let keywordsWhere;
+        if (req.query.keywords){
+            console.log("HUHHHHH")
+            const keywords = req.query.keywords.split(' ');
+            keywordsWhere = {name:keywords}
+            title.push("Keywords: " + keywords)
+        }
+
+        let likedBy;
+        if (req.query.likedby){
+            const likedByUser = await User.findByPk(req.query.likedby);
+            likedBy = {UserId: req.query.likedby}
+            title.push("Liked By: " + likedByUser.username)
+        }
+
+        const options = {
             include:[
                 User,
                 {
+                    model:Like,
+                    where:likedBy
+                },
+                {
                     model:Keyword,
-                    where:{
-                        name:keywords
-                    }
+                    where:keywordsWhere
             }],
             order:sequelize.literal('updatedAt DESC')
-        });
+        }
+
+        const allPieces = await ArtPiece.findAll(options);
 
         const passedInObject = {
-            title:'By Keyword: '+keywords,
+            title:title,
             activeUser: req.session.activeUser,
             artPieces: allPieces.map(piece=>piece.get({plain:true}))
         }
