@@ -1,5 +1,5 @@
 const express = require('express');
-const { ArtPiece,Keyword,User } = require('../models');
+const { ArtPiece,Keyword,User,Comment, Like } = require('../models');
 const router = express.Router();
 const sequelize = require('sequelize');
 
@@ -29,12 +29,22 @@ router.get('/artpiece/:id', async (req,res)=>{
     try{
         const artPiece = await ArtPiece.findOne({
             where:{id:req.params.id},
-            include:[Keyword,User,Comment],
+            include:[Keyword,User,{
+                model:Comment,
+                include:User
+            },{
+                model:Like
+            }],
+            
             });
+           
         const passedInObject = {
             activeUser: req.session.activeUser,
-            artPiece: artPiece.get({plain:true})
+            artPiece: artPiece.get({plain:true}),
+            isLiked: req.session.activeUser ? artPiece.Likes.some(like=>like.UserId==req.session.activeUser.id) : false
         }
+        
+        console.log(passedInObject);
         return res.render('art-peice', passedInObject)
     }catch(err){
         console.log(err);
@@ -46,7 +56,7 @@ router.get('/dashboard', async(req,res)=>{
     if (req.session.activeUser){
         const myPieces = await ArtPiece.findAll({
             where:{UserId:req.session.activeUser.id},
-            include:[User,Keyword],
+            include:[User,Keyword, Like],
             order:sequelize.literal('updatedAt DESC')
         })
         const passedInObject = {
@@ -68,7 +78,7 @@ router.get('/gallery/:id', async(req,res)=>{
         }
         const allPieces = await ArtPiece.findAll({
             where:{UserId:req.params.id},
-            include:[User,Keyword],
+            include:[User,Keyword, Like],
             order:sequelize.literal('updatedAt DESC')
         });
         const passedInObject = {

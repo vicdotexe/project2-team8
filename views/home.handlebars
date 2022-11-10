@@ -1,10 +1,8 @@
 {{!-- The main view when you come to the homepage, for displaying 9 ramdom preview-cards --}}
 <section class="artpieces-container">
-  <section class="artpieces">
     {{#each artPieces as |artPiece|}}
 
         {{> art-preview-card artPiece}}
 
     {{/each}}
-  </section>
 </section>

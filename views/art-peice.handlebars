@@ -21,20 +21,32 @@
 
     <div class="input-group">
     <div class="input-group-prepend">
-        <textarea class="form-control" aria-label="With textarea"></textarea>
-        <button class="input-group-text">Comment on this piece</button>
+        <textarea id="commentInput" class="form-control" aria-label="With textarea"></textarea>
+        <button id="submitCommentButton" artId="{{artPiece.id}}" class="input-group-text">Add Comment</button>
     </div>
     </div>
 
-    <input type="button" class="btn btn-primary" type="submit" value="Like?">
+    <button id="likeButton" data-artId="{{artPiece.id}}" class="btn btn-primary" type="submit" data-liked="{{isLiked}}">
+        {{#if isLiked}}
+        Unlike
+        {{else}}
+        Like
+        {{/if}}
+    </button> LikeCount:{{artPiece.Likes.length}}
 
     <div class="recent-comments">Recent comments:
         <ul>
-            <li>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Necessitatibus natus dolor at quidem totam optio dignissimos vitae. Sapiente vitae veniam veritatis ducimus similique beatae, aperiam iusto praesentium itaque culpa repellendus.</li>
-            <li>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Necessitatibus natus dolor at quidem totam optio dignissimos vitae. Sapiente vitae veniam veritatis ducimus similique beatae, aperiam iusto praesentium itaque culpa repellendus.</li>
-            <li>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Necessitatibus natus dolor at quidem totam optio dignissimos vitae. Sapiente vitae veniam veritatis ducimus similique beatae, aperiam iusto praesentium itaque culpa repellendus.</li>
-            <li>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Necessitatibus natus dolor at quidem totam optio dignissimos vitae. Sapiente vitae veniam veritatis ducimus similique beatae, aperiam iusto praesentium itaque culpa repellendus.</li>
-            {{comments}}
+            {{#each artPiece.Comments as |comment|}}
+                <li>
+                    <div>
+                        <h6>From: {{comment.User.username}}</h4>
+                        <p>{{comment.content}}</p>
+                    </div>
+                </li>
+            {{/each}}
         </ul>
     </div>
 </div>
+
+<script src="/js/commentSubmission.js" ></script>
+<script src="/js/likeHandler.js" ></script>
