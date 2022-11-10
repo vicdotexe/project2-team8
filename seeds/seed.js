@@ -66,7 +66,7 @@ const seed = async ()=> {
         },
         {
             name:"The Birth of Venus",
-            path:"https:https://cdn.shopify.com/s/files/1/0047/4231/6066/files/The_Birth_of_Venus_by_Sandro_Botticelli_800x.jpg",
+            path:"https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Sandro_Botticelli_-_La_nascita_di_Venere_-_Google_Art_Project_-_edited.jpg/640px-Sandro_Botticelli_-_La_nascita_di_Venere_-_Google_Art_Project_-_edited.jpg",
             UserId: 2
         },
         {
@@ -162,6 +162,27 @@ const seed = async ()=> {
             UserId: 3
         }
     ])
+
+    await artPieces[1].addKeywordsAsync(["lanscape", "starry", "night", "houses"])
+    await artPieces[2].addKeywordsAsync(["abstract", "colorful", "shapes"])
+    await artPieces[3].addKeywordsAsync(["women", "smile", "portrait"])
+    await artPieces[4].addKeywordsAsync(["women", "portrait", "earring"])
+    await artPieces[5].addKeywordsAsync(["women", "sleep", "warm"])
+    await artPieces[6].addKeywordsAsync(["women", "seashell", "hair", "trees"])
+    await artPieces[7].addKeywordsAsync(["lanscape", "trees", "park", "trail"])
+    await artPieces[8].addKeywordsAsync(["abstract", "red", "faces"])
+    await artPieces[9].addKeywordsAsync(["lanscape", "women", "flower", "trees"])
+    await artPieces[10].addKeywordsAsync(["angels", "children", "flower"])
+    await artPieces[11].addKeywordsAsync(["buildings", "street", "landscape", "carriage"])
+    await artPieces[12].addKeywordsAsync(["lines", "abstract", "shapes"])
+    await artPieces[13].addKeywordsAsync(["abstract", "colorful", "bridge"])
+    await artPieces[14].addKeywordsAsync(["lanscape", "trees", "nature", "Ridgefield"])
+    await artPieces[15].addKeywordsAsync(["lanscape", "birds", "lake", "evening", "view"])
+    await artPieces[16].addKeywordsAsync(["time", "clock", "brown"])
+    await artPieces[17].addKeywordsAsync(["abstract", "lines", "yellow"])
+    await artPieces[18].addKeywordsAsync(["waterfront", "park", "women", "men", "grass"])
+    await artPieces[19].addKeywordsAsync(["angels", "bow and arrow", "flying"])
+    await artPieces[20].addKeywordsAsync(["dogs", "gamble", "poker", "cards"])
 
 
     console.log("seeded!")
