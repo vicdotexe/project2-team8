@@ -22,6 +22,8 @@ const like = (id)=>{
     }).then(response=>{
         if (response.ok){
             document.location.reload();
+        }else{
+            document.location.replace('/signin');
         }
     })
 }
@@ -36,6 +38,8 @@ const unlike = (id)=>{
     }).then(response=>{
         if (response.ok){
             document.location.reload();
+        }else{
+            document.location.replace('/signin');
         }
     })
 }
