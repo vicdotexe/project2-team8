@@ -1,0 +1,39 @@
+<div id="dashboard">
+    <div id="sidebar">
+        <a href="/addartpiece"><button id="addWorkBtn">Add New Work</button></a>
+
+        <div>
+            <h5>Watching:</h5>
+            <div class="d-flex flex-column">
+                {{#each watchedUsers as |watched|}}
+                <a href="/gallery/{{watched.id}}">{{watched.username}}</a>
+                {{/each}}
+            </div>
+        </div>
+
+        <div>
+            <h5>Followed By</h5>
+            <div class="d-flex flex-column">
+                {{#each followingUsers as |followed|}}
+                <a href="/gallery/{{followed.id}}">{{followed.username}}</a>
+                {{/each}}
+            </div>
+        </div>
+
+    </div>
+
+    <div class="artpieces-container" id="dashboard-gallery">
+        {{#each artPieces as |artPiece|}}
+        <div class="d-flex flex-column justify-content-center align-items-center">
+            <div id="artpieces-container">
+                {{>art-preview-card artPiece}}
+            </div>
+            <div>
+                <button id="editBtn">Edit</button>
+                <button id="removeBtn">Remove</button>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+
+</div>

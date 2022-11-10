@@ -1,36 +1,52 @@
 <div class="art-piece">
     <div class="main-image">
-        <img src="{{path}}" > The main view for a single peice of art.
+        <img src="{{artPiece.path}}" > The main view for a single peice of art.
     </div>
 
     <div class="image-info">
-        <h3 class="artist-name">Artist:{{artist}}</h3>
+        <h3 class="artist-name">Artist:{{artPiece.artist}}</h3>
         <h3 class="art-name">Piece name: </h3>
-        <h3>Genre of art:{{genre}}</h3>
+        <h3>Genre of art:{{artPiece.genre}}</h3>
     </div>
     <div class="art-description">Description by artist:<ul>
             <li>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Necessitatibus natus dolor at quidem totam optio dignissimos vitae. Sapiente vitae veniam veritatis ducimus similique beatae, aperiam iusto praesentium itaque culpa repellendus.</li>
             
-        </ul>{{description}}</div>
+        </ul>{{artPiece.description}}</div>
 
-    <div>Keywords to search by:{{keyword}}{{keyword}}{{keyword}}</div>
+    <div>Keywords:
+        {{#each artPiece.Keywords as |keyword|}}
+        {{keyword.name}}
+        {{/each}}
+        </div>
 
     <div class="input-group">
     <div class="input-group-prepend">
-        <textarea class="form-control" aria-label="With textarea"></textarea>
-        <button class="input-group-text">Comment on this piece</button>
+        <textarea id="commentInput" class="form-control" aria-label="With textarea"></textarea>
+        <button id="submitCommentButton" artId="{{artPiece.id}}" class="input-group-text">Add Comment</button>
     </div>
     </div>
 
-    <input type="button" class="btn btn-primary" type="submit" value="Like?">
+    <button id="likeButton" data-artId="{{artPiece.id}}" class="btn btn-primary" type="submit" data-liked="{{isLiked}}">
+        {{#if isLiked}}
+        Unlike
+        {{else}}
+        Like
+        {{/if}}
+    </button> LikeCount:{{artPiece.Likes.length}}
 
     <div class="recent-comments">Recent comments:
         <ul>
-            <li>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Necessitatibus natus dolor at quidem totam optio dignissimos vitae. Sapiente vitae veniam veritatis ducimus similique beatae, aperiam iusto praesentium itaque culpa repellendus.</li>
-            <li>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Necessitatibus natus dolor at quidem totam optio dignissimos vitae. Sapiente vitae veniam veritatis ducimus similique beatae, aperiam iusto praesentium itaque culpa repellendus.</li>
-            <li>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Necessitatibus natus dolor at quidem totam optio dignissimos vitae. Sapiente vitae veniam veritatis ducimus similique beatae, aperiam iusto praesentium itaque culpa repellendus.</li>
-            <li>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Necessitatibus natus dolor at quidem totam optio dignissimos vitae. Sapiente vitae veniam veritatis ducimus similique beatae, aperiam iusto praesentium itaque culpa repellendus.</li>
-            {{comments}}
+            {{#each artPiece.Comments as |comment|}}
+                <li>
+                    <div>
+                        <h6>From: {{comment.User.username}}</h4>
+                        <p>{{comment.content}}</p>
+                    </div>
+                </li>
+            {{/each}}
         </ul>
     </div>
 </div>
+
+<script src="/js/commentSubmission.js" ></script>
+<script src="/js/likeHandler.js" ></script>

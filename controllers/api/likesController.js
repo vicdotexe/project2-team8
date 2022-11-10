@@ -1,5 +1,5 @@
 const express = require('express');
-const { User } = require('../../models');
+const { Like } = require('../../models');
 const router = express.Router();
 const bcrypt = require("bcrypt")
 
@@ -27,15 +27,34 @@ router.get("/:id", async(req,res)=>{
 })
 
 router.post('/', async(req,res)=>{
+    if (!req.session.activeUser){
+        return res.status(401).json({message:"Must be signed in"})
+    }
     try{
-        const newUserData = await User.create(req.body);
-        req.session.activeUser = {
-            username:req.body.username,
-            id: newUserData.id
-        }
-        res.status(201).json(newUserData);
+        const likeData = await Like.findOrCreate({where:{
+            UserId: req.session.activeUser.id,
+            ArtPieceId: req.body.ArtPieceId
+        }});
+        res.status(201).json(likeData);
     }catch(err){
-        res.status(500).json({message:"That username is taken."})
+        console.log(err);
+        res.status(500).json({message:err.message})
+    }
+})
+
+router.delete('/', async(req,res)=>{
+    if (!req.session.activeUser){
+        return res.status(401).json({message:"Must be signed in"})
+    }
+    try{
+        const likeData = await Like.destroy({where:{
+            UserId: req.session.activeUser.id,
+            ArtPieceId: req.body.ArtPieceId
+        }});
+        res.status(201).json(likeData);
+    }catch(err){
+        console.log(err);
+        res.status(500).json({message:err.message})
     }
 })
 

@@ -3,6 +3,7 @@ const ArtPiece = require('./ArtPiece');
 const Comment = require('./Comment');
 const Keyword = require('./Keyword');
 const ArtPieceKeyword = require('./ArtPieceKeyword.js');
+const Like = require('./Like')
 
 
 // user - artpeice
@@ -36,11 +37,18 @@ Comment.belongsTo(ArtPiece);
 ArtPiece.belongsToMany(Keyword, {through: ArtPieceKeyword})
 Keyword.belongsToMany(ArtPiece, {through: ArtPieceKeyword})
 
+Like.belongsTo(User);
+Like.belongsTo(ArtPiece);
+
+ArtPiece.hasMany(Like);
+User.hasMany(Like);
+
 
 module.exports = {
     User,
     ArtPiece,
     Comment,
     Keyword,
-    ArtPieceKeyword
+    ArtPieceKeyword,
+    Like
 }

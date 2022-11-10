@@ -1,0 +1,19 @@
+<div class="w-100 d-flex flex-column justify-content-center align-items-center" id ="add-artpiece">
+    <h1>Add new art piece to gallery </h1>
+    <div class="w-50" id="upload-art">
+        <form class="d-flex flex-column justify-content-center">
+            <img id="uploadedImg">
+            <div>
+                <input id="fileButton" type="file">
+                <div id="spinner" class="spinner-border text-primary d-none" role="status">
+                    <span class="sr-only">Loading...</span>
+                </div>
+            </div>
+            <input id="name" type="text" name="name" placeholder="art piece name">
+            <textarea id="description"> description here</textarea>
+            <button id="submitButton"> Submit</button>
+        </form>
+    </div>
+</div>
+
+<script src="/js/add-artpiece-script.js"></script>
