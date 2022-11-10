@@ -3,6 +3,8 @@ const { ArtPiece,Keyword,User,Comment } = require('../models');
 const router = express.Router();
 const sequelize = require('sequelize');
 
+
+
 router.get('/home', async (req,res)=>{
 
     try{
@@ -44,6 +46,42 @@ router.get('/artpiece/:id', async (req,res)=>{
         console.log(err);
         return res.status(500).json({err:err.message})
     }
+})
+
+router.get('/search', async(req,res)=>{
+    console.log("SEARCHED");
+    console.log(req.query);
+    if (!req.query.keywords){
+        return res.redirect('/home')
+    }
+
+    const keywords = req.query.keywords.split(' ');
+    console.log(keywords)
+
+    try{
+        const allPieces = await ArtPiece.findAll({
+            include:[
+                User,
+                {
+                    model:Keyword,
+                    where:{
+                        name:keywords
+                    }
+            }],
+            order:sequelize.literal('updatedAt DESC')
+        });
+
+        const passedInObject = {
+            activeUser: req.session.activeUser,
+            artPieces: allPieces.map(piece=>piece.get({plain:true}))
+        }
+    
+        res.render('home', passedInObject)
+    }catch(err){
+        console.log(err);
+        return res.status(500).json({err:err.message})
+    }
+
 })
 
 router.get('/dashboard', async(req,res)=>{
