@@ -8,25 +8,32 @@
 
 .image-info {
     display: flex;
-    justify-content: center;
+    justify-content:space-around;
 }
 
 .image-info h3 {
     padding: 0 15px;
+    color:aliceblue;
+    
 }
 
 .recent-comments {
-    width: 80vw;
+    width: 63vw;
     margin: 0 auto;
-    background: pink;
+    background: whitesmoke;
+    border: 7px double var(--dark);
+    border-radius: 10px;
+  
 }
 
 .recent-comments ul {
-    list-style: none;
+    list-style:none;
+
 }
 
 .recent-comments li {
     padding: 15px 0;
+    border-bottom: 3px dashed black;
 }
 .art-description ul {
     list-style: none;
@@ -36,7 +43,36 @@
     padding: 15px 0;
 }
 .art-description {
-    width: 80vw;
+    width: 63vw;
     margin: 0 auto;
-    background: rgb(247, 63, 93);
+    background: whitesmoke;
+    border: 7px double var(--dark);
+    border-radius: 10px;
+}
+.art-piece-keyword {
+    color:aliceblue;
+}
+
+.like-count-button  {
+    background-color:rgb(63, 171, 239);
+}
+
+.artist-name-keyword {
+    color:whitesmoke;
+    display: flex;
+}
+
+.artist-name-keyword h3 {
+    left:30px
+}
+.main-image {
+    margin-top: 33px;
+    margin-bottom: 18px;
+}
+.input-group-prepend-comment {
+    width: 1010px;
+}
+
+.input-group-text-comment {
+    align-items: flex-end;
 }

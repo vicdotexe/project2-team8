@@ -48,8 +48,10 @@ document.querySelector("#submitButton").addEventListener("click", (e)=>{
     e.preventDefault();
     aData.name = document.querySelector("#name").value;
     aData.description = document.querySelector("#description").value;
-    if (!aData.path || !aData.name || ! aData.description){
-        alert("Must include atleast an image, name, and description.");
+    aData.keywords = document.querySelector("#add-art-keywords").value.split(' ');
+
+    if (!aData.path || !aData.name || ! aData.description || !aData.keywords){
+        alert("Must include atleast an image, name, description, and keywords");
         return;
     }
     fetch('/api/artpieces',{
