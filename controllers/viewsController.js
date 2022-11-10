@@ -169,11 +169,28 @@ router.get('/addartpiece',(req,res)=>{
     }
     res.render('add-artpiece', passedInObject)
 })
+router.get('/edit/:id',async(req,res)=>{
+    if (!req.session.activeUser){
+        return res.redirect('/signin')
+    }
+
+    const artPiece = await ArtPiece.findByPk(req.params.id);
+    if (artPiece.UserId != req.session.activeUser.id){
+        return res.redirect('/signin')
+    }
+    const passedInObject = {
+        activeUser: req.session.activeUser,
+        artPiece: artPiece.get({plain:true})
+    }
+
+    res.render('update-art', passedInObject)
+})
 
 router.get('/')
 
 router.get('*', (req,res)=>{
     res.redirect('/home');
 })
+
 
 module.exports = router;
