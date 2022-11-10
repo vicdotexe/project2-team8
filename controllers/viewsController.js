@@ -14,6 +14,7 @@ router.get('/home', async (req,res)=>{
         });
 
         const passedInObject = {
+            title: 'Recent Creations',
             activeUser: req.session.activeUser,
             artPieces: allPieces.map(piece=>piece.get({plain:true}))
         }
@@ -72,6 +73,7 @@ router.get('/search', async(req,res)=>{
         });
 
         const passedInObject = {
+            title:'By Keyword: '+keywords,
             activeUser: req.session.activeUser,
             artPieces: allPieces.map(piece=>piece.get({plain:true}))
         }
