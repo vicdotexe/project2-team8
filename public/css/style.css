@@ -8,6 +8,9 @@ body{
   background: black;
 }
 
+#homeTitle{
+  color:whitesmoke
+}
   .artpieces-container {
     display: flex;
     flex-flow: wrap;
