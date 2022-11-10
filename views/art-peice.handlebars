@@ -26,7 +26,13 @@
     </div>
     </div>
 
-    <input  type="button" class="btn btn-primary" type="submit" value="Like?">
+    <button id="likeButton" data-artId="{{artPiece.id}}" class="btn btn-primary" type="submit" data-liked="{{isLiked}}">
+        {{#if isLiked}}
+        Unlike
+        {{else}}
+        Like
+        {{/if}}
+    </button> LikeCount:{{artPiece.Likes.length}}
 
     <div class="recent-comments">Recent comments:
         <ul>
@@ -43,3 +49,4 @@
 </div>
 
 <script src="/js/commentSubmission.js" ></script>
+<script src="/js/likeHandler.js" ></script>
