@@ -12,9 +12,16 @@
 </head>
 <body class="h-screen flex flex-col">
  
-<nav class="flex flex-col bg-gray-300 m-0">
-  <h1 class="m-4 text-black text-4xl">Renegade Art</h1>
-  <div class="flex flex-wrap justify-between m-2">
+<nav class="flex flex-col bg-zinc-900 m-0 w-full">
+  <div class="flex justify-between items-end mt-4 ml-4 mr-4 no-wrap">
+    <h1 class="text-4xl shrink-0">Renegade Art</h1>
+        <form class="flex h-full shrink rounded overflow-hidden">
+        <input class="h-full shrink ml-4 rounded-tl rounded-bl bg-zinc-300 text-black p-2 outline-0 min-w-0" id="searchInput" type="text" placeholder="search by keyword...">
+        <button class="h-full shrink-0 bg-zinc-800 rounded-none ml-0 px-3" id="searchButton">Search</button>
+      </form>
+  </div>
+  
+  <div class="flex flex-wrap justify-between">
     <ul id="navLinks" class="flex">
         <li class="nav-item">
           <a class="nav-link" href="/home">Browse</a>
@@ -33,10 +40,6 @@
         </li>
         {{/if}}
     </ul>
-    <div class="m-2">
-      <input type="text">
-      <button>Search</button>
-    </div>
   </div>
   
 </nav>
