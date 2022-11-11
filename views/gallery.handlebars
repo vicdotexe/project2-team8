@@ -2,7 +2,7 @@
 
 <section class="artpieces-container">
   <div class="user-gallery-name">{{galleryOwner.username}}</div>
-  <section class="artpieces">
+  <section class="artpieces-container">
     <!-- For each artPiece that belongs to this User, the art-preview-card partial is used to render each artpiece's data -->
     {{#each artPieces as |artPiece|}}
     {{> art-preview-card}}

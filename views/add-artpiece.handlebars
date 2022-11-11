@@ -1,8 +1,6 @@
-<div class="w-100 d-flex flex-column justify-content-center align-items-center">
-    <h1>Add to your gallery.</h1>
-    <div class="w-50">
-        
-        <img>
+<div class="w-100 d-flex flex-column justify-content-center align-items-center" id ="add-artpiece">
+    <h1>Add new art piece to gallery </h1>
+    <div class="w-50" id="upload-art">
         <form class="d-flex flex-column justify-content-center">
             <img id="uploadedImg">
             <div>
@@ -11,13 +9,12 @@
                     <span class="sr-only">Loading...</span>
                 </div>
             </div>
-            
-            <input id="name" type="text" name="name" placeholder="name">
-            <textarea id="description"> description here</textarea>
+            <input id="name" type="text" name="name" placeholder="art piece name">
+            <textarea id="description" placeholder="description"></textarea>
+            <textarea id="add-art-keywords" placeholder="keywords - separete keywords with space"></textarea>
             <button id="submitButton"> Submit</button>
         </form>
     </div>
 </div>
-
 
 <script src="/js/add-artpiece-script.js"></script>

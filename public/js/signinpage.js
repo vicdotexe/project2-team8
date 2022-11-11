@@ -31,8 +31,8 @@ document.querySelector('#signInButton').addEventListener("click", (e)=>{
 
 document.querySelector('#signUpButton').addEventListener("click", (e)=>{
     e.preventDefault();
-    const password = document.querySelector('#username').value;
-    const username = document.querySelector('#password').value;
+    const username = document.querySelector('#username').value;
+    const password = document.querySelector('#password').value;
 
     if (password && username){
         if (password.length < 8){

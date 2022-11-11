@@ -1,32 +1,44 @@
 <div class="art-piece">
     <div class="main-image">
-        <img src="{{artPiece.path}}" > The main view for a single peice of art.
+        <img src="{{artPiece.path}}" > 
     </div>
 
     <div class="image-info">
-        <h3 class="artist-name">Artist:{{artPiece.artist}}</h3>
-        <h3 class="art-name">Piece name: </h3>
-        <h3>Genre of art:{{artPiece.genre}}</h3>
+         <h3 class="art-name">Piece name: {{artPiece.name}}</h3>
+        <button id="likeButton" data-artId="{{artPiece.id}}" class="btn btn-primary" type="submit" data-liked="{{isLiked}}">
+        {{#if isLiked}}
+        Unlike
+        {{else}}
+        Like
+        {{/if}}
+        </button>
     </div>
-    <div class="art-description">Description by artist:<ul>
-            <li>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Necessitatibus natus dolor at quidem totam optio dignissimos vitae. Sapiente vitae veniam veritatis ducimus similique beatae, aperiam iusto praesentium itaque culpa repellendus.</li>
-            
-        </ul>{{artPiece.description}}</div>
-
-    <div>Keywords:
+    <button class="like-count-button" LikeCount:{{artPiece.Likes.length}}>
+    </button>
+    <div class="artist-name-keyword">
+        <h3>Artist:{{artPiece.User.username}} </h3>
+        <div class="art-piece-keyword">Keywords:
         {{#each artPiece.Keywords as |keyword|}}
         {{keyword.name}}
         {{/each}}
-        </div>
+    </div>
+
+      
+        {{!-- <h3>Genre of art:{{artPiece.genre}}</h3> --}}
+    </div>
+    <div class="art-description">Description:
+        <p>{{artPiece.description}}
+        </p>
+    </div>
+
 
     <div class="input-group">
-    <div class="input-group-prepend">
+    <div class="input-group-prepend-comment">
         <textarea id="commentInput" class="form-control" aria-label="With textarea"></textarea>
-        <button id="submitCommentButton" artId="{{artPiece.id}}" class="input-group-text">Add Comment</button>
+        <button id="submitCommentButton" artId="{{artPiece.id}}" class="input-group-text-comment">Add Comment</button>
     </div>
     </div>
 
-    <input  type="button" class="btn btn-primary" type="submit" value="Like?">
 
     <div class="recent-comments">Recent comments:
         <ul>
@@ -43,3 +55,4 @@
 </div>
 
 <script src="/js/commentSubmission.js" ></script>
+<script src="/js/likeHandler.js" ></script>

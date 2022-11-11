@@ -1,37 +1,42 @@
-<div class="d-flex">
-    <div>
-        <a href="/addartpiece"><button>Add New Work</button></a>
-
+<div id="dashboard">
+    <div id="sidebar">
+        <a href="/addartpiece"><button id="addWorkBtn">Add New Work</button></a>
+        <br>
+        <a href="/search?likedby={{activeUser.id}}"><button id="addWorkBtn">My Liked Art</button></a>
         <div>
-            <h4>Watching:</h4>
+            <h5>Watching:</h5>
             <div class="d-flex flex-column">
                 {{#each watchedUsers as |watched|}}
-                    <a href="/gallery/{{watched.id}}">{{watched.username}}</a>
+                <a href="/gallery/{{watched.id}}">{{watched.username}}</a>
                 {{/each}}
             </div>
         </div>
 
         <div>
-            <h4>Followed By:</h4>
+            <h5>Followed By</h5>
             <div class="d-flex flex-column">
                 {{#each followingUsers as |followed|}}
-                    <a href="/gallery/{{followed.id}}">{{followed.username}}</a>
+                <a href="/gallery/{{followed.id}}">{{followed.username}}</a>
                 {{/each}}
             </div>
         </div>
 
     </div>
 
-    <div>
+    <div class="artpieces-container" id="dashboard-gallery">
         {{#each artPieces as |artPiece|}}
-        <div class="d-flex flex-column justify-content-center align-items-center border">
-            {{>art-preview-card artPiece}}
+        <div class="d-flex flex-column justify-content-center align-items-center">
+            <div id="artpieces-container">
+                {{>art-preview-card artPiece}}
+            </div>
             <div>
-                <button>Edit</button>
-                <button>Remove</button>
+                <button id="editBtn">Edit</button>
+                <button class="removeBtn" artPId="{{artPiece.id}}">Remove</button>
             </div>
         </div>
         {{/each}}
     </div>
 
 </div>
+
+<script src="/js/delete-artpiece-script.js"></script>

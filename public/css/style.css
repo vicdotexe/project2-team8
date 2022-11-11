@@ -1,4 +1,4 @@
-/* for home,signin, art-preview, gallaruby */ */
+/* for home, signin, art-preview, gallary, dashboard, add-artPiece */ 
 
 *{
   font-family: Arial, Helvetica, sans-serif;
@@ -8,7 +8,10 @@ body{
   background: black;
 }
 
-  #artpieces-container {
+#homeTitle{
+  color:whitesmoke
+}
+  .artpieces-container {
     display: flex;
     flex-flow: wrap;
     justify-content: center;
@@ -46,6 +49,10 @@ body{
     justify-content: center;
   }
 
+  #info{
+    margin:5px;
+  }
+
   img {
     max-width: 380px;
     max-height: 380px;
@@ -72,10 +79,38 @@ body{
     font:bold;
     border-radius: 8px;
   }
-  #signUpButton{
+
+  button{
     border-radius: 5px;
   }
+  #dashboard{
+    display: flex;
+    flex-wrap: wrap;
+  }
 
-  #signInButton{
-    border-radius: 5px;
+  #sidebar{
+    width:15%;
+    color:whitesmoke;
+  }
+
+  #dashboard-gallery{
+    width: 80%;
+  }
+
+  #addWorkBtn{
+    margin: 10px;
+    background-color: lightgoldenrodyellow;
+  }
+
+  h5{
+    margin: 10px;
+  }
+
+  #add-artpiece{
+    color:whitesmoke;
+  }
+
+  #upload-art{
+    margin:20px;
+    margin-top: 50px;
   }
