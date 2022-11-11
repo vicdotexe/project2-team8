@@ -28,7 +28,7 @@ const unlike = (id)=>{
         if (response.ok){
             document.location.reload();
         }else{
-            document.location.replace('/signin');
+            document.location.href = '/signin';
         }
     })
 }
@@ -44,7 +44,7 @@ const like = (id)=>{
         if (response.ok){
             document.location.reload();
         }else{
-            document.location.replace('/signin');
+            document.location.href = '/signin';
         }
     })
 }

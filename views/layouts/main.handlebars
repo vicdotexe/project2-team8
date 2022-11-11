@@ -29,7 +29,7 @@
         {{#if activeUser}}
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/dashboard">{{activeUser.username}} Dashboard</a>
+          <a class="nav-link relative" href="/dashboard">My Dashboard<span class="absolute left-5 top-4 text-sm text-zinc-400">- {{activeUser.username}} </span></a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/logout">Logout</a>
