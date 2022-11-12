@@ -1,12 +1,44 @@
 {{!-- The main view for displaying preview-cards of art peices of a certain user. --}}
 
-<section class="artpieces-container">
-  <div class="user-gallery-name">{{galleryOwner.username}}</div>
-  <section class="artpieces-container">
-    <!-- For each artPiece that belongs to this User, the art-preview-card partial is used to render each artpiece's data -->
-    {{#each artPieces as |artPiece|}}
-    {{> art-preview-card}}
-    {{/each}}
-  </section>
+<div class="w-full flex flex-col justify-center items-center mt-1">
+    <h1 class="text-3xl p-2">{{activeUser.username}}'s Gallery</h1>
+    <div class="w-11/12">
+        <ul class="flex flex-wrap justify-center items-center">
+            {{#each artPieces as |artPiece|}}
+            
+                <li class="galleryItem h-[40vh] grow m-1 overflow-hidden relative group cursor-pointer rounded-xl md:rounded" data-id="{{artPiece.id}}">
+                    </a>
+                    <div class="absolute invisible w-full h-full md:group-hover:visible bg-gradient-to-b from-black via-transparent to-black opacity-75"></div>
+                    
+                    <div class="absolute flex flex-col justify-end w-full h-full p-3 text-white font-bold invisible md:group-hover:visible">
+                        <h1>{{artPiece.name}}</h1>
+                        <div class="flex justify-between">
+                            <h1>- <a href="/gallery/{{artPiece.User.id}}" class="hover:text-sky-500">{{artPiece.User.username}}</a></h1>
+                            <div class="hover:text-sky-500 star" data-id="{{artPiece.id}}" 
+                            data-liked="{{#if artPiece.isLiked}}true{{else}}false{{/if}}">
+                            {{#if artPiece.isLiked}}★{{else}}✩{{/if}} {{artPiece.Likes.length}}</div>
+                        </div>
+                    </div>
+
+                     <div class="flex flex-col justify-end w-full p-2 text-white font-bold md:hidden bg-gradient-to-b from-zinc-700 to-zinc-800">
+                        <h1>{{artPiece.name}}</h1>
+                        <div class="flex justify-between">
+                            <h1>- <a href="/gallery/{{artPiece.User.id}}" class="hover:text-sky-500">{{artPiece.User.username}}</a></h1>
+                            <div class="hover:text-sky-500 star" data-id="{{artPiece.id}}" 
+                            data-liked="{{#if artPiece.isLiked}}true{{else}}false{{/if}}">
+                            {{#if artPiece.isLiked}}★{{else}}✩{{/if}} {{artPiece.Likes.length}}</div>
+                        </div>
+                    </div>
+
+                    <a href="/artpiece/{{artPiece.id}}">
+                    <img class="max-h-full min-w-full object-cover align-bottom" src="{{artPiece.path}}"> 
+                    </a>
+                </li>
+            
+            {{/each}}
+            <li class="grow-[10]"></li>
+        </ul>
+    </div>
 </div>
+<script src="/js/gallery.js"></script>
 
