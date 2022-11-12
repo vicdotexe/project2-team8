@@ -22,7 +22,7 @@ document.querySelector('#signInButton').addEventListener("click", (e)=>{
             return response.json();
         }).then(data=>{
             if (data){
-                alert(data.message);
+                ShowModal(data.message);
             }
     
         });
@@ -36,7 +36,7 @@ document.querySelector('#signUpButton').addEventListener("click", (e)=>{
 
     if (password && username){
         if (password.length < 8){
-            alert("Password must be atleast 8 characters")
+            Alert("Password must be atleast 8 characters")
             return;
         }
 
@@ -52,18 +52,18 @@ document.querySelector('#signUpButton').addEventListener("click", (e)=>{
             })
         }).then(response=>{
             if (response.ok){
-                alert("Account created")
+                Alert("Account created")
                 return null;
             }
             return response.json();
         }).then(data=>{
             if (data){
-                alert(data.message);
+                Alert(data.message);
             }
     
         });
     }else{
-        alert("Password and username fields must be filled out.")
+        Alert("Password and username fields must be filled out.")
     }
 })
 

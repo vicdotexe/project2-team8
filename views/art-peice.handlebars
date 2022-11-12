@@ -1,57 +1,38 @@
-<div class="art-piece">
-    <div class="main-image">
-        <img src="{{artPiece.path}}" > 
-    </div>
+<div class="flex w-full flex-col items-center">
+    <div class="flex flex-col w-[75%] items-center">
+    
+        <img class="max-w-fit" src="{{artPiece.path}}" > 
 
-    <div class="image-info">
-         <h3 class="art-name">Piece name: {{artPiece.name}}</h3>
-        <button id="likeButton" data-artId="{{artPiece.id}}" class="btn btn-primary" type="submit" data-liked="{{isLiked}}">
-        {{#if isLiked}}
-        Unlike
-        {{else}}
-        Like
-        {{/if}}
+
+        <div class="image-info">
+            <input class="art-name">Piece name: {{artPiece.name}}</input>
+            <button id="likeButton" data-artId="{{artPiece.id}}" class="btn btn-primary" type="submit" data-liked="{{isLiked}}">
+            {{#if isLiked}}
+            Unlike
+            {{else}}
+            Like
+            {{/if}}
+            </button>
+        </div>
+        <button class="like-count-button" LikeCount:{{artPiece.Likes.length}}>
         </button>
-    </div>
-    <button class="like-count-button" LikeCount:{{artPiece.Likes.length}}>
-    </button>
-    <div class="artist-name-keyword">
-        <h3>Artist:{{artPiece.User.username}} </h3>
-        <div class="art-piece-keyword">Keywords:
-        {{#each artPiece.Keywords as |keyword|}}
-        {{keyword.name}}
-        {{/each}}
-    </div>
+        <div class="artist-name-keyword">
+            <h3>Artist:{{artPiece.User.username}} </h3>
+            <div class="art-piece-keyword">Keywords:
+            <input></input>
+        </div>
 
-      
-        {{!-- <h3>Genre of art:{{artPiece.genre}}</h3> --}}
-    </div>
-    <div class="art-description">Description:
-        <p>{{artPiece.description}}
-        </p>
-    </div>
+        
+            {{!-- <h3>Genre of art:{{artPiece.genre}}</h3> --}}
+        </div>
+        <div class="art-description">Description:
+            <input>{{artPiece.description}}
+            </input>
+        </div>
 
-
-    <div class="input-group">
-    <div class="input-group-prepend-comment">
-        <textarea id="commentInput" class="form-control" aria-label="With textarea"></textarea>
-        <button id="submitCommentButton" artId="{{artPiece.id}}" class="input-group-text-comment">Add Comment</button>
+        <button>Submit Changes</button>
     </div>
-    </div>
-
-
-    <div class="recent-comments">Recent comments:
-        <ul>
-            {{#each artPiece.Comments as |comment|}}
-                <li>
-                    <div>
-                        <h6>From: {{comment.User.username}}</h4>
-                        <p>{{comment.content}}</p>
-                    </div>
-                </li>
-            {{/each}}
-        </ul>
-    </div>
+        
 </div>
 
 <script src="/js/commentSubmission.js" ></script>
