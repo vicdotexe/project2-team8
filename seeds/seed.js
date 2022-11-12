@@ -1,5 +1,5 @@
 const sequelize = require("../config/connection");
-const {User,ArtPiece,Comment} = require("../models/");
+const {User,ArtPiece,Comment, Like} = require("../models/");
 const LoremIpsum = require("lorem-ipsum").LoremIpsum;
 
 const lorem = new LoremIpsum({
@@ -144,7 +144,23 @@ const seed = async ()=> {
 
     await ArtPiece.update({description: "randDescription"}, {where:{description:null}});
 
+    //Randomize Likes
+    for (let i=1; i<5; i++) {
+        const randomLikeCount = Math.floor(Math.random()*5); 
+        let artpieceIds = []; 
+        for (let k =1; k<21; k++) {
+            artpieceIds.push(k)
+        }
+        for (let x=0; x<randomLikeCount; x++){
+            await Like.create({
+                UseId: i, 
+                artPieces: artPieces[x]
+            })
+        } artPieces.splice(x, i); 
+    }
 
+    
+    // Randomize Comments
     const comments = await Comment.bulkCreate([
         {
             content:"cool art",
@@ -162,7 +178,8 @@ const seed = async ()=> {
             UserId: 3
         }
     ])
-
+    
+// title names adding to the keywords
     await artPieces[1].addKeywordsAsync(["lanscape", "starry", "night", "houses"])
     await artPieces[2].addKeywordsAsync(["abstract", "colorful", "shapes"])
     await artPieces[3].addKeywordsAsync(["women", "smile", "portrait"])
