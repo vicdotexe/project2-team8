@@ -4,17 +4,19 @@
     </div>
 
     <div class="image-info">
-         <h3 class="art-name">Piece name: {{artPiece.name}}</h3>
-        <button id="likeButton" data-artId="{{artPiece.id}}" class="btn btn-primary" type="submit" data-liked="{{isLiked}}">
-        {{#if isLiked}}
-        Unlike
-        {{else}}
-        Like
-        {{/if}}
-        </button>
+        <h3 class="art-name">Piece name: {{artPiece.name}}</h3>
+        <div class="like-buttons">
+            <button id="likeButton" data-artId="{{artPiece.id}}" class="btn btn-primary" type="submit" data-liked="{{isLiked}}">
+            {{#if isLiked}}
+            Unlike
+            {{else}}
+            Like
+            {{/if}}
+            </button>
+            <button class="like-count-button" LikeCount:{{artPiece.Likes.length}}>
+            </button>
+        </div>
     </div>
-    <button class="like-count-button" LikeCount:{{artPiece.Likes.length}}>
-    </button>
     <div class="artist-name-keyword">
         <h3>Artist:{{artPiece.User.username}} </h3>
         <div class="art-piece-keyword">Keywords:
