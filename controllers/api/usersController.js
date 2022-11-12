@@ -1,5 +1,5 @@
 const express = require('express');
-const { User } = require('../../models');
+const { User, Relationship } = require('../../models');
 const router = express.Router();
 const bcrypt = require("bcrypt")
 
@@ -17,7 +17,23 @@ router.get("/", async(req,res)=>{
 
 router.get("/:id", async(req,res)=>{
     try{
-        const user = await User.findByPk(req.params.id);
+        const user = await User.findByPk(req.params.id, 
+            {
+                include:{
+                    model:Relationship,
+                    include:{
+                        model:User,
+                        as: 'Following',
+                        attributes:{
+                            exclude:'password'
+                        }
+                    },
+                    attributes:{
+                        exclude:['id', 'UserId']
+                    }
+                }
+            });
+        console.log(user);
         const userPlain = user.get({plain:true});
         return res.json(userPlain);
     }catch(err){
