@@ -17,4 +17,7 @@ router.use('/images', imagesController);
 const likesController = require('./likesController')
 router.use('/likes', likesController);
 
+const relationshipController = require('./followController')
+router.use('/follow', relationshipController);
+
 module.exports = router;

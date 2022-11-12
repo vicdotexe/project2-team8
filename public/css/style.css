@@ -93,6 +93,10 @@ body{
     color:whitesmoke;
   }
 
+  #sidebar a{
+    color:green;
+  }
+
   #dashboard-gallery{
     width: 80%;
   }

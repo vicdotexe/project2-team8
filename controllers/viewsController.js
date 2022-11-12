@@ -1,5 +1,5 @@
 const express = require('express');
-const { ArtPiece,Keyword,User,Comment, Like } = require('../models');
+const { ArtPiece,Keyword,User,Comment, Like, Relationship } = require('../models');
 const router = express.Router();
 const sequelize = require('sequelize');
 
@@ -115,10 +115,50 @@ router.get('/dashboard', async(req,res)=>{
             include:[User,Keyword, Like],
             order:sequelize.literal('updatedAt DESC')
         })
+        const myFollowing = await Relationship.findAll({
+            where: {
+                UserId:req.session.activeUser.id
+            },
+            include:[{
+                model:User,
+                as: 'Following',
+                attributes:{
+                    exclude:'password'
+                }
+            }],
+            attributes:{
+                exclude:['id', 'UserId']
+            }
+        })
+
+        const myWatchers = await Relationship.findAll({
+            where:{
+                FollowingId:req.session.activeUser.id
+            },
+            include:{
+                model:User,
+                as: 'Follower',
+                attributes:{
+                    exclude:'password'
+                }
+            },
+            attributes:{
+                exclude:['id']
+            }
+        })
+        console.log(myWatchers);
+
+        const myFollowingPlain = myFollowing.map(rel=>{return rel.get({plain:true})});
+        const myWatchersPlain = myWatchers.map(rel=>{return rel.get({plain:true})});
+        console.log(myWatchersPlain);
+
         const passedInObject = {
             activeUser: req.session.activeUser,
-            artPieces: myPieces.map(piece=>piece.get({plain:true}))
+            artPieces: myPieces.map(piece=>piece.get({plain:true})),
+            following: myFollowingPlain.map(rel=>rel.Following),
+            followers: myWatchersPlain.map(rel=>rel.Follower)
         }
+
         return res.render('dashboard', passedInObject);
     }else{
         return res.redirect('/signin')
