@@ -5,7 +5,26 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Rock+Salt&family=Sono&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
+      <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily:{
+            'rockSalt': ['Rock Salt', 'cursive'],
+            'sono': ['Sono', 'sans-serif'],
+
+          },
+          colors: {
+            
+          }
+        }
+      }
+    }
+  </script>
     <link rel="stylesheet" href="/css/main.css">
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/art-piece.css">
@@ -13,36 +32,37 @@
 <body class="h-screen flex flex-col">
   {{>modal}}
  
-<nav class="flex flex-col bg-zinc-900 m-0 w-full">
-  <div class="flex justify-between items-end mt-4 ml-4 mr-4 no-wrap">
-    <h1 class="text-4xl shrink-0">Renegade Art</h1>
-        <form class="flex h-full shrink rounded overflow-hidden">
-        <input class="h-full shrink ml-4 rounded-tl rounded-bl bg-zinc-300 text-black p-2 outline-0 min-w-0" id="searchInput" type="text" placeholder="search by keyword...">
-        <button class="h-full shrink-0 bg-zinc-800 rounded-none ml-0 px-3" id="searchButton">Search</button>
-      </form>
+<nav class="flex flex-col bg-zinc-900 m-0 w-full items-start sm:flex-row sm:items-end sm:justify-between pr-2">
+  <div>
+    <div class="flex justify-between items-end mt-4 ml-4 mr-4 no-wrap">
+      <h1 class="text-4xl shrink-0 font-rockSalt">Renegade Art</h1>
+    </div>
+    
+    <div class="flex flex-wrap justify-between pb-2">
+      <ul id="navLinks" class="flex">
+          <li class="nav-item">
+            <a class="nav-link font-sono" href="/home">Browse</a>
+          </li>
+          {{#if activeUser}}
+          </li>
+          <li class="nav-item">
+            <a class="nav-link relative font-sono" href="/dashboard">My Dashboard</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link font-sono" href="/logout">Logout</a>
+          </li>
+          {{else}}
+          <li class="nav-item">
+            <a class="nav-link font-sono" href="/signin">Login</a>
+          </li>
+          {{/if}}
+      </ul>
+    </div>
   </div>
-  
-  <div class="flex flex-wrap justify-between">
-    <ul id="navLinks" class="flex">
-        <li class="nav-item">
-          <a class="nav-link" href="/home">Browse</a>
-        </li>
-        {{#if activeUser}}
-        </li>
-        <li class="nav-item">
-          <a class="nav-link relative" href="/dashboard">My Dashboard<span class="absolute left-5 top-4 text-sm text-zinc-400">- {{activeUser.username}} </span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/logout">Logout</a>
-        </li>
-        {{else}}
-        <li class="nav-item">
-          <a class="nav-link" href="/signin">Login</a>
-        </li>
-        {{/if}}
-    </ul>
-  </div>
-  
+    <form class="flex self-center justify-center sm:self-end nowrap pt-3 bg-black sm:bg-transparent w-full sm:w-auto sm:mb-2">
+      <input class="ml-4 rounded-tl rounded-bl bg-zinc-300 text-black p-2 outline-0 min-w-0" id="searchInput" type="text" placeholder="search by keyword...">
+      <button class="bg-zinc-700 rounded-none ml-0 px-3 rounded-br rounded-tr" id="searchButton">Search</button>
+    </form>
 </nav>
 
 
