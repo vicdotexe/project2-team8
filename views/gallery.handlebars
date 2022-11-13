@@ -1,7 +1,7 @@
 {{!-- The main view for displaying preview-cards of art peices of a certain user. --}}
 
 <div class="w-full flex flex-col justify-center items-center mt-1">
-    <h1 class="text-3xl p-2">{{activeUser.username}}'s Gallery</h1>
+    <h1 class="text-3xl p-2">{{galleryOwner.username}}'s Gallery</h1>
     <div class="w-11/12">
         <ul class="flex flex-wrap justify-center items-center">
             {{#each artPieces as |artPiece|}}
