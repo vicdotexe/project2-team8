@@ -1,0 +1,17 @@
+<div id="alert" class="fixed w-screen h-screen z-10 flex flex-col justify-center items-center bg-gray-700 bg-opacity-80 hidden">
+    <div class="border border-white rounded-lg p-5 pt-10 flex flex-col items-center bg-black w-1/2">
+    <div id="alertContent"></div>
+    <button id="alertClose" class="bg-sky-500 py-1 px-5 self-end mt-10">OK</button>
+    </div>
+</div>
+
+<div id="confirm" class="fixed w-screen h-screen z-10 flex flex-col justify-center items-center bg-gray-700 bg-opacity-80 hidden">
+    <div class="border border-white rounded-lg p-5 pt-10 flex flex-col items-center justify-center bg-black w-1/2">
+        <div id="confirmContent"></div>
+        <div>
+            <button id="confirmYes" class="bg-sky-500 py-1 px-5 self-end mt-10">Yes</button>
+            <button id="confirmNo" class="bg-sky-500 py-1 px-5 self-end mt-10">No</button>
+        </div>
+    </div>
+</div>
+<script src="/js/modal.js"></script>

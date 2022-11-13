@@ -1,7 +1,11 @@
 /* for home, signin, art-preview, gallary, dashboard, add-artPiece */ 
-
+:root{
+  --rockSalt: 'Rock Salt', cursive;
+  --sono: 'Sono', sans-serif;
+  --montserrat: 'Montserrat', sans-serif;
+}
 *{
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--montserrat);
   color:white;
 }
 
@@ -140,3 +144,20 @@ body{
     margin:20px;
     margin-top: 50px;
   }
+
+  .art-description p {
+    color: black;
+  }
+
+  .recent-comments p {
+    color: black;
+  }
+  
+  input {
+    color: black !important;
+  }
+
+  #commentInput {
+    width: 57vw;
+  }
+ 
