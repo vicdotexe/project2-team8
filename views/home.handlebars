@@ -1,7 +1,7 @@
 {{!-- The main view when you come to the homepage, for displaying 9 ramdom preview-cards --}}
 
 <div class="w-full flex flex-col justify-center items-center mt-1">
-    <h1 class="text-3xl p-2">{{title}}</h1>
+    <h1 class="text-3xl p-2">{{title}} </h1> {{#if showWatchButton}} {{>watchButton this}}{{/if}}
     <div class="w-11/12">
         <ul class="flex flex-wrap justify-center items-center">
             {{#each artPieces as |artPiece|}}

@@ -59,11 +59,6 @@ router.get('/artpiece/:id', async (req,res)=>{
 })
 
 router.get('/search', async(req,res)=>{
-    console.log("SEARCHED");
-    console.log(req.query);
-    // if (!req.query.keywords && !req.query.likedby){
-    //     return res.redirect('/home')
-    // }
     try{
         let title = [];
         let keywordsWhere;
@@ -118,11 +113,20 @@ router.get('/search', async(req,res)=>{
             activeUser: req.session.activeUser,
             artPieces: plain
         } }
-        // const passedInObject = {
-        //     title:title,
-        //     activeUser: req.session.activeUser,
-        //     artPieces: plain
-        // }
+
+        passedInObject.showWatchButton = byUser != undefined;
+        passedInObject.galleryId = byUser ? byUser.id : null;
+
+        if (req.session.activeUser && byUser != undefined){
+            const isFollowing = await Relationship.findOne({where:{
+                UserId: req.session.activeUser.id,
+                FollowingId: req.query.userid
+            }});
+            console.log("------------------")
+            console.log(isFollowing);
+
+            passedInObject.isWatching = isFollowing != null;
+        }
 
         res.render('home', passedInObject)
     }catch(err){
