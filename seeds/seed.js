@@ -1,11 +1,12 @@
 const sequelize = require("../config/connection");
-const {User,ArtPiece,Comment, Relationship} = require("../models/");
+const {User,ArtPiece,Comment, Relationship, Like} = require("../models/");
 const LoremIpsum = require("lorem-ipsum").LoremIpsum;
 
+// lorem for generating random descriptions and comments
 const lorem = new LoremIpsum({
   sentencesPerParagraph: {
-    max: 8,
-    min: 4
+    max: 4,
+    min: 1
   },
   wordsPerSentence: {
     max: 16,
@@ -16,6 +17,7 @@ const lorem = new LoremIpsum({
 const seed = async ()=> {
     await sequelize.sync({force:true});
 
+    // Bulk create Users
     const users = await User.bulkCreate([
         {
             username:"silvia",
@@ -38,12 +40,14 @@ const seed = async ()=> {
         individualHooks:true
     })
 
+    // Bulk create Relations
     const relations = await Relationship.bulkCreate([
         {UserId:2,FollowingId:1},
         {UserId:4,FollowingId:2}
     ])
 
-    const artPieces = await ArtPiece.bulkCreate([
+    // Construct hardcoded artpiece data
+    const bulkArtPieces = [
         {
             name:"Starry Night",
             path:"https://sep.yimg.com/ty/cdn/madisonartshop/most-famous-paintings-2.jpg?t=1660737943&",
@@ -144,30 +148,56 @@ const seed = async ()=> {
             path: "https://i0.wp.com/bookmypainting.com/wp-content/uploads/2019/06/dogs-playing-poker-2.jpeg?resize=603%2C361&ssl=1", 
             UserId: 4
         },
-    ])
+    ]
+    // Generate random description for each piece
+    bulkArtPieces.forEach(piece=> piece.description = lorem.generateParagraphs(1));
 
+    // Bulk create ArtPieces
+    const artPieces = await ArtPiece.bulkCreate(bulkArtPieces)
 
-    await ArtPiece.update({description: "randDescription"}, {where:{description:null}});
-
-
-    const comments = await Comment.bulkCreate([
-        {
-            content:"cool art",
-            ArtPieceId: 1,
-            UserId: 1
-        },
-        {
-            content:"i like it",
-            ArtPieceId: 2,
-            UserId: 2
-        },
-        {
-            content:"very nice",
-            ArtPieceId: 1,
-            UserId: 3
+    // Construct random comments 
+    const bulkComments = [];
+    for(let i = 1; i<= artPieces.length; i++){
+        let rand = Math.floor(Math.random()*3);
+        if (rand){
+            for (let j = 1; j<=users.length; j++){
+                rand = Math.floor(Math.random()*3);
+                if (rand){
+                    bulkComments.push({
+                        content:lorem.generateParagraphs(1),
+                        ArtPieceId:i,
+                        UserId:j
+                    })
+                    console.log("made comment")
+                }
+            }
         }
-    ])
+    }
 
+    // Bulk create Comments
+    const comments = await Comment.bulkCreate(bulkComments)
+
+    // construct likes
+    const bulkLikes = [];
+    for(let i = 1; i <= artPieces.length; i++){
+        let rand = Math.floor(Math.random()*3);
+        if (rand){
+            for (let j = 1; j<=users.length; j++){
+                rand = Math.floor(Math.random()*3);
+                if (rand){
+                    bulkLikes.push({
+                        UserId: j,
+                        ArtPieceId: i
+                    })
+                }
+            }
+        }
+    }
+
+    // bulk create likes
+    const likes = await Like.bulkCreate(bulkLikes);
+
+    // hard coded keywords
     await artPieces[0].addKeywordsAsync(["landscape", "starry", "night", "houses"])
     await artPieces[1].addKeywordsAsync(["abstract", "colorful", "shapes"])
     await artPieces[2].addKeywordsAsync(["woman", "smile", "portrait"])
