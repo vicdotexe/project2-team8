@@ -123,3 +123,20 @@ body{
     margin:20px;
     margin-top: 50px;
   }
+
+  .art-description p {
+    color: black;
+  }
+
+  .recent-comments p {
+    color: black;
+  }
+  
+  input {
+    color: black !important;
+  }
+
+  #commentInput {
+    width: 57vw;
+  }
+ 

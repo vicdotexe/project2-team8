@@ -4,39 +4,36 @@
     </div>
 
     <div class="image-info">
-        <h3 class="artist-name">Artist:{{artPiece.artist}}</h3>
-        <h3 class="art-name">Piece name: </h3>
+        <h3 class="artist-name">Artist:{{artPiece.User.username}}</h3>
+        <h3 class="art-name">Piece name:{{artPiece.name}} </h3>
         {{!-- <h3>Genre of art:{{artPiece.genre}}</h3> --}}
     </div>
     <div class="input-group">
     <div class="input-group-prepend">
         <textarea id="commentInput" class="form-control" aria-label="With textarea"></textarea>
-        <button id="submitCommentButton" artId="{{artPiece.id}}" class="title-input-group-text-comment">Change Title?</button>
     </div>
     </div>
-    <div class="input-group">
+    <div class="description-input">
     <div class="input-group-prepend">
         <textarea id="commentInput" class="form-control" aria-label="With textarea"></textarea>
-        <button id="submitCommentButton" artId="{{artPiece.id}}" class="description-input-group-text-comment">Add Description</button>
     </div>
     </div>
    
-        </ul>{{artPiece.description}}</div>
-        <div class="input-group">
-    <div class="input-group-prepend">
-        <textarea id="commentInput" class="form-control" aria-label="With textarea"></textarea>
-        <button id="submitCommentButton" artId="{{artPiece.id}}" class="keyword-input-group-text-comment">Add Keywords</button>
-    </div>
-    </div>
-
-    <div class="art-piece-keyword">Keywords:
+        </ul>{{artPiece.description}}
+        <div class="art-piece-keyword">Keywords:
         {{#each artPiece.Keywords as |keyword|}}
         {{keyword.name}}
         {{/each}}
         </div>
-
-    
+        <div class="keyword-input">
+    <div class="input-group-prepend">
+        <textarea id="commentInput" class="form-control" aria-label="With textarea"></textarea>
     </div>
+    </div>
+    <div>
+        <button id="submitCommentButton" artId="{{artPiece.id}}" class="keyword-input-group-text-comment">Submit Changes</button>
+    </div>
+</div>
 </div>
 
 <script src="/js/commentSubmission.js" ></script>
