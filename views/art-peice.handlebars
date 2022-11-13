@@ -1,12 +1,12 @@
 <div class="art-piece">
-    <div class="main-image">
-        <img src="{{artPiece.path}}" > 
-    </div>
+<div class="w-full flex flex-col items-center mt-5">
+    <div class="w-[75%] flex flex-col items-center">
+        <img class="max-w-fit mb-7" src="{{artPiece.path}}" > 
 
     <div class="image-info">
         <h3 class="art-name">Piece name: {{artPiece.name}}</h3>
         <div class="like-buttons">
-            <button id="likeButton" data-artId="{{artPiece.id}}" class="btn btn-primary" type="submit" data-liked="{{isLiked}}">
+            <button id="likeButton" data-artId="{{artPiece.id}}" class="btn 300" type="submit" data-liked="{{isLiked}}">
             {{#if isLiked}}
             Unlike
             {{else}}
@@ -37,8 +37,10 @@
     <div class="input-group">
     <div class="input-group-prepend-comment">
         <textarea id="commentInput" class="form-control" aria-label="With textarea"></textarea>
-        <button id="submitCommentButton" artId="{{artPiece.id}}" class="input-group-text-comment">Add Comment</button>
     </div>
+    </div>
+    <div>
+        <button id="submitCommentButton" artId="{{artPiece.id}}" class="input-group-text-comment">Add Comment</button>
     </div>
 
 
@@ -54,6 +56,8 @@
             {{/each}}
         </ul>
     </div>
+    </div>
+</div>
 </div>
 
 <script src="/js/commentSubmission.js" ></script>

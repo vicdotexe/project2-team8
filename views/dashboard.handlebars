@@ -6,7 +6,7 @@
         <div>
             <h5>Watching:</h5>
             <div class="d-flex flex-column">
-                {{#each watchedUsers as |watched|}}
+                {{#each following as |watched|}}
                 <a href="/gallery/{{watched.id}}">{{watched.username}}</a>
                 {{/each}}
             </div>
@@ -15,8 +15,8 @@
         <div>
             <h5>Followed By</h5>
             <div class="d-flex flex-column">
-                {{#each followingUsers as |followed|}}
-                <a href="/gallery/{{followed.id}}">{{followed.username}}</a>
+                {{#each followers as |follower|}}
+                <a href="/gallery/{{follower.id}}">{{follower.username}}</a>
                 {{/each}}
             </div>
         </div>

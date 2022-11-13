@@ -20,7 +20,7 @@
 
 .recent-comments {
     width: 63vw;
-    margin: 0 auto;
+    margin: 10px auto;
     background: whitesmoke;
     border: 7px double var(--dark);
     border-radius: 10px;
@@ -46,10 +46,11 @@
 
 .art-description {
     width: 63vw;
-    margin: 0 auto;
+    margin: 10px auto;
     background: whitesmoke;
     border: 7px double var(--dark);
     border-radius: 10px;
+    color: black;
 }
 
 .art-piece-keyword {
@@ -57,7 +58,6 @@
 }
 
 .like-count-button  {
-    background-color:rgb(63, 171, 239);
     padding: .375rem .75rem;
 }
 
@@ -73,13 +73,40 @@
     left:30px
 }
 .main-image {
-    margin-top: 33px;
-    margin-bottom: 18px;
+    margin-left: 35vw;
+    margin-top: 10vh;
+    margin-bottom: 7vh;
 }
 .input-group-prepend-comment {
-    width: 1010px;
+    width: 63vw;
+    margin: 10px auto;
 }
 
 .input-group-text-comment {
     align-items: flex-end;
+}
+
+.recent-comments {
+    color: black;
+}
+
+.recent-comments h6 {
+    color: black;
+}
+
+.like-buttons {
+    color:aliceblue;
+    background-color: aqua;
+}
+
+.form-control {
+    color: black;
+}
+
+.keword-input {
+
+}
+
+.description-input {
+    
 }

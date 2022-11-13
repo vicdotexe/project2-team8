@@ -5,5 +5,5 @@ searchButton.addEventListener('click', (e)=>{
     e.preventDefault();
     const input = searchInput.value;
     const keywords = `keywords=${input.replace(' ','+')}`
-    document.location.replace('/search?'+keywords)
+    document.location.href = '/search?'+keywords;
 })
