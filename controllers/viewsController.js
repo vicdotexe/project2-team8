@@ -78,14 +78,14 @@ router.get('/search', async(req,res)=>{
         if (req.query.likedby){
             const likedByUser = await User.findByPk(req.query.likedby);
             likedBy = {UserId: req.query.likedby}
-            title.push("Liked By: " + likedByUser.username)
+            title.push("Liked By " + likedByUser.username)
         }
 
         let byUser;
         if (req.query.userid){
             const byUserData = await User.findByPk(req.query.userid);
             byUser = {id:req.query.userid}
-            title.push("From " + byUserData.username + "'s Gallery")
+            title.push(byUserData.username + "'s Gallery")
         }
 
         const options = {
@@ -108,13 +108,23 @@ router.get('/search', async(req,res)=>{
         const allPieces = await ArtPiece.findAll(options);
         const plain = allPieces.map(piece=>piece.get({plain:true}))
         plain.forEach(piece=>{ piece.isLiked = req.session.activeUser ? piece.Likes.some(like=>like.UserId==req.session.activeUser.id) : false})
-        
-        const passedInObject = {
+        // Silvia- search no result
+        let passedInObject;
+        if(plain.length === 0){
+            passedInObject = {
+                title:"Nothing found, try another keyword"
+            }
+        } else { passedInObject = {
             title:title,
             activeUser: req.session.activeUser,
             artPieces: plain
-        }
-    
+        } }
+        // const passedInObject = {
+        //     title:title,
+        //     activeUser: req.session.activeUser,
+        //     artPieces: plain
+        // }
+
         res.render('home', passedInObject)
     }catch(err){
         console.log(err);
