@@ -88,6 +88,7 @@ body{
   button{
     border-radius: 5px;
   }
+
   #dashboard{
     display: flex;
     flex-wrap: wrap;
@@ -96,10 +97,11 @@ body{
   #sidebar{
     width:15%;
     color:whitesmoke;
+
   }
 
   #sidebar a{
-    color:green;
+    color:rgb(32, 112, 32);
   }
 
   #dashboard-gallery{
@@ -107,14 +109,33 @@ body{
   }
 
   #addWorkBtn{
-    margin: 10px;
-    background-color: lightgoldenrodyellow;
+    margin: 15px;
+    background-color: whitesmoke;
+    padding: 4px 4px;
+  }
+
+  #myLikedBtn{
+    margin: 15px;
+    background-color: whitesmoke;
+    padding: 4px 4px;
   }
 
   h5{
     margin: 10px;
   }
 
+  #watchingList{
+    margin: 10px;
+    margin-left: 15px;
+    padding-bottom: 15px;
+
+  }
+
+  #followList{
+    margin: 10px;
+    margin-left: 15px;
+    padding-bottom: 15px;
+  }
   #add-artpiece{
     color:whitesmoke;
   }

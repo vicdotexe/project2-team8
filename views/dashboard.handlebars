@@ -1,10 +1,11 @@
 <div id="dashboard">
     <div id="sidebar">
-        <a href="/addartpiece"><button id="addWorkBtn">Add New Work</button></a>
+        <a href="/addartpiece"><button id="addWorkBtn"> Add New Work </button></a>
         <br>
-        <a href="/search?likedby={{activeUser.id}}"><button id="addWorkBtn">My Liked Art</button></a>
-        <div>
-            <h5>Watching:</h5>
+        <a href="/search?likedby={{activeUser.id}}"><button id="myLikedBtn"> My Liked Art </button></a>
+        
+        <div id="watchingList">
+            <h5 class="underline font-bold italic">Following artists </h5>
             <div class="d-flex flex-column">
                 {{#each following as |watched|}}
                 <a href="/search?userid={{watched.id}}">{{watched.username}}</a>
@@ -12,8 +13,8 @@
             </div>
         </div>
 
-        <div>
-            <h5>Followed By</h5>
+        <div id="followList" >
+            <h5 class="underline font-bold italic">Followers</h5>
             <div class="d-flex flex-column">
                 {{#each followers as |follower|}}
                 <a href="/search?userid={{follower.id}}">{{follower.username}}</a>
@@ -25,13 +26,13 @@
 
     <div class="artpieces-container" id="dashboard-gallery">
         {{#each artPieces as |artPiece|}}
-        <div class="d-flex flex-column justify-content-center align-items-center">
+        <div class="d-flex flex-column justify-content-center align-items-center border border-white m-4 py-3">
             <div id="artpieces-container">
                 {{>art-preview-card artPiece}}
             </div>
-            <div>
-                <button id="editBtn">Edit</button>
-                <button class="removeBtn" artPId="{{artPiece.id}}">Remove</button>
+            <div class="flex flex-row justify-center">
+                <button class="border border-white mx-3 px-3" id="editBtn">Edit</button>
+                <button class="border border-white mx-3 px-3 removeBtn" artPId="{{artPiece.id}}">Remove</button>
             </div>
         </div>
         {{/each}}
