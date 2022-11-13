@@ -41,10 +41,21 @@ const seed = async ()=> {
     })
 
     // Bulk create Relations
-    const relations = await Relationship.bulkCreate([
-        {UserId:2,FollowingId:1},
-        {UserId:4,FollowingId:2}
-    ])
+    const bulkRelations = [];
+    for (let i = 1; i <= users.length; i++){
+        for (let j = 1; j <= users.length; j ++){
+            if (i != j){
+                let rand = Math.floor(Math.random()*2);
+                if (rand){
+                    bulkRelations.push({
+                        UserId:i,
+                        FollowingId:j
+                    })
+                }
+            }
+        }
+    }
+    const relations = await Relationship.bulkCreate(bulkRelations);
 
     // Construct hardcoded artpiece data
     const bulkArtPieces = [
