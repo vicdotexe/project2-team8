@@ -22,7 +22,7 @@ document.querySelector('#signInButton').addEventListener("click", (e)=>{
             return response.json();
         }).then(data=>{
             if (data){
-                ShowModal(data.message);
+                Alert(data.message);
             }
     
         });
