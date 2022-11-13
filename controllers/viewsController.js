@@ -68,7 +68,6 @@ router.get('/search', async(req,res)=>{
         let title = [];
         let keywordsWhere;
         if (req.query.keywords){
-            console.log("HUHHHHH")
             const keywords = req.query.keywords.split(' ');
             keywordsWhere = {name:keywords}
             title.push("Searching: " + keywords)

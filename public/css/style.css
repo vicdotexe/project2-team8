@@ -1,7 +1,11 @@
 /* for home, signin, art-preview, gallary, dashboard, add-artPiece */ 
-
+:root{
+  --rockSalt: 'Rock Salt', cursive;
+  --sono: 'Sono', sans-serif;
+  --montserrat: 'Montserrat', sans-serif;
+}
 *{
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--montserrat);
   color:white;
 }
 
