@@ -124,6 +124,15 @@ router.get('/search', async(req,res)=>{
 
 router.get('/dashboard', async(req,res)=>{
     if (req.session.activeUser){
+        const user = await User.findByPk(req.session.activeUser.id, {
+            include:[
+                ArtPiece, 
+                Like, 
+                Relationship]
+        });
+
+        console.log(user);
+        console.log('---------------------------')
         const myPieces = await ArtPiece.findAll({
             where:{UserId:req.session.activeUser.id},
             include:[User,Keyword, Like],
@@ -144,6 +153,8 @@ router.get('/dashboard', async(req,res)=>{
                 exclude:['id', 'UserId']
             }
         })
+        
+        console.log(myFollowing);
 
         const myWatchers = await Relationship.findAll({
             where:{

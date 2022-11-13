@@ -1,5 +1,5 @@
 const sequelize = require("../config/connection");
-const {User,ArtPiece,Comment} = require("../models/");
+const {User,ArtPiece,Comment, Relationship} = require("../models/");
 const LoremIpsum = require("lorem-ipsum").LoremIpsum;
 
 const lorem = new LoremIpsum({
@@ -37,6 +37,11 @@ const seed = async ()=> {
     ],{
         individualHooks:true
     })
+
+    const relations = await Relationship.bulkCreate([
+        {UserId:2,FollowingId:1},
+        {UserId:4,FollowingId:2}
+    ])
 
     const artPieces = await ArtPiece.bulkCreate([
         {
