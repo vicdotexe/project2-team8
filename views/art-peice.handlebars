@@ -1,63 +1,53 @@
-<div class="art-piece">
 <div class="w-full flex flex-col items-center mt-5">
-    <div class="w-[75%] flex flex-col items-center">
-        <img class="max-w-fit mb-7" src="{{artPiece.path}}" > 
+    
+    <div class="w-[75%] flex flex-col items-center bg-zinc-900 p-4 rounded">
+        <img class="max-h-[40ch]" src="{{artPiece.path}}" > 
+        <div class="flex flex-col mt-3">
+            <div class="flex justify-between w-full">
+                <div>
+                <h3 class="text-lg font-bold">{{artPiece.name}}</h3>
+                <a href="/search?userid={{artPiece.User.id}}" class="hover:text-sky-500 self-start">- {{artPiece.User.username}}</a>
+                </div>
 
-    <div class="image-info">
-        <h3 class="art-name">Piece name: {{artPiece.name}}</h3>
-        <div class="like-buttons">
-            <button id="likeButton" data-artId="{{artPiece.id}}" class="btn 300" type="submit" data-liked="{{isLiked}}">
-            {{#if isLiked}}
-            Unlike
-            {{else}}
-            Like
-            {{/if}}
-            </button>
-            <button class="like-count-button" LikeCount:{{artPiece.Likes.length}}>
-            </button>
+                <div id="likeButton" class="hover:text-sky-500 star cursor-pointer" data-artId="{{artPiece.id}}" 
+                data-liked="{{#if isLiked}}true{{else}}false{{/if}}">
+                {{#if isLiked}}★{{else}}✩{{/if}} {{artPiece.Likes.length}}</div>
+            
+            </div>
+            <div class="text-start mt-2 p-2">
+                <p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;{{artPiece.description}}
+                </p>
+            
+
+                <div class="self-end text-end mt-2 text-sm">Keywords: &nbsp;&nbsp;
+                {{#each artPiece.Keywords as |keyword|}}
+                <a href="/search?keywords={{keyword.name}}" class="hover:text-sky-500">{{keyword.name}}</a> &nbsp;&nbsp;
+                {{/each}}
+                </div>
+            </div>
+        </div>
+
+        <div class="mx-12 mt-4">
+            <form class="flex flex-col">
+                <textarea id="commentTextarea" class="rounded text-black p-2" aria-label="With textarea" placeholder="Write your comment here..."></textarea>
+                <button id="submitCommentButton" artId="{{artPiece.id}}" class="self-end bg-sky-500 rounded p-1 mt-2">Add Comment</button>
+            </form>
+
+            <h3>Comments -</h3>
+            <div class="recent-comments bg-zinc-300 p-2">
+                <ul>
+                    {{#each artPiece.Comments as |comment|}}
+                        <li>
+                            <div>
+                                <h6>From: {{comment.User.username}}</h4>
+                                <p>{{comment.content}}</p>
+                            </div>
+                        </li>
+                    {{/each}}
+                </ul>
+            </div>
         </div>
     </div>
-    <div class="artist-name-keyword">
-        <h3>Artist:{{artPiece.User.username}} </h3>
-        <div class="art-piece-keyword">Keywords:
-        {{#each artPiece.Keywords as |keyword|}}
-        {{keyword.name}}
-        {{/each}}
-    </div>
-
-      
-        {{!-- <h3>Genre of art:{{artPiece.genre}}</h3> --}}
-    </div>
-    <div class="art-description">Description:
-        <p>{{artPiece.description}}
-        </p>
-    </div>
-
-
-    <div class="input-group">
-    <div class="input-group-prepend-comment">
-        <textarea id="commentInput" class="form-control" aria-label="With textarea"></textarea>
-    </div>
-    </div>
-    <div>
-        <button id="submitCommentButton" artId="{{artPiece.id}}" class="input-group-text-comment">Add Comment</button>
-    </div>
-
-
-    <div class="recent-comments">Recent comments:
-        <ul>
-            {{#each artPiece.Comments as |comment|}}
-                <li>
-                    <div>
-                        <h6>From: {{comment.User.username}}</h4>
-                        <p>{{comment.content}}</p>
-                    </div>
-                </li>
-            {{/each}}
-        </ul>
-    </div>
-    </div>
-</div>
 </div>
 
 <script src="/js/commentSubmission.js" ></script>
