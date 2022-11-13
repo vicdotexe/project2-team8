@@ -68,7 +68,6 @@ router.get('/search', async(req,res)=>{
         let title = [];
         let keywordsWhere;
         if (req.query.keywords){
-            console.log("HUHHHHH")
             const keywords = req.query.keywords.split(' ');
             keywordsWhere = {name:keywords}
             title.push("Searching: " + keywords)
@@ -78,14 +77,14 @@ router.get('/search', async(req,res)=>{
         if (req.query.likedby){
             const likedByUser = await User.findByPk(req.query.likedby);
             likedBy = {UserId: req.query.likedby}
-            title.push("Liked By: " + likedByUser.username)
+            title.push("Liked By " + likedByUser.username)
         }
 
         let byUser;
         if (req.query.userid){
             const byUserData = await User.findByPk(req.query.userid);
             byUser = {id:req.query.userid}
-            title.push("From " + byUserData.username + "'s Gallery")
+            title.push(byUserData.username + "'s Gallery")
         }
 
         const options = {
@@ -108,13 +107,23 @@ router.get('/search', async(req,res)=>{
         const allPieces = await ArtPiece.findAll(options);
         const plain = allPieces.map(piece=>piece.get({plain:true}))
         plain.forEach(piece=>{ piece.isLiked = req.session.activeUser ? piece.Likes.some(like=>like.UserId==req.session.activeUser.id) : false})
-        
-        const passedInObject = {
+        // Silvia- search no result
+        let passedInObject;
+        if(plain.length === 0){
+            passedInObject = {
+                title:"Nothing found, try another keyword"
+            }
+        } else { passedInObject = {
             title:title,
             activeUser: req.session.activeUser,
             artPieces: plain
-        }
-    
+        } }
+        // const passedInObject = {
+        //     title:title,
+        //     activeUser: req.session.activeUser,
+        //     artPieces: plain
+        // }
+
         res.render('home', passedInObject)
     }catch(err){
         console.log(err);
@@ -125,6 +134,15 @@ router.get('/search', async(req,res)=>{
 
 router.get('/dashboard', async(req,res)=>{
     if (req.session.activeUser){
+        const user = await User.findByPk(req.session.activeUser.id, {
+            include:[
+                ArtPiece, 
+                Like, 
+                Relationship]
+        });
+
+        console.log(user);
+        console.log('---------------------------')
         const myPieces = await ArtPiece.findAll({
             where:{UserId:req.session.activeUser.id},
             include:[User,Keyword, Like],
@@ -145,6 +163,8 @@ router.get('/dashboard', async(req,res)=>{
                 exclude:['id', 'UserId']
             }
         })
+        
+        console.log(myFollowing);
 
         const myWatchers = await Relationship.findAll({
             where:{
