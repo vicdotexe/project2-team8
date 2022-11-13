@@ -144,62 +144,30 @@ const seed = async ()=> {
 
     await ArtPiece.update({description: "randDescription"}, {where:{description:null}});
 
-    //Randomize Likes
-    for (let i=1; i<5; i++) {
-        const randomLikeCount = Math.floor(Math.random()*5); 
-        let artpieceIds = []; 
-        for (let k =1; k<21; k++) {
-            artpieceIds.push(k)
-        }
-        for (let x=0; x<randomLikeCount; x++){
-            await Like.create({
-                UseId: i, 
-                artPieces: artPieces[x]
-            })
-        } artPieces.splice(x, i); 
-    }
 
-    
-    // Randomize Comments
-    const comments = await Comment.bulkCreate([
-        {
-            content:"cool art",
-            ArtPieceId: 1,
-            UserId: 1
-        },
-        {
-            content:"i like it",
-            ArtPieceId: 2,
-            UserId: 2
-        },
-        {
-            content:"very nice",
-            ArtPieceId: 1,
-            UserId: 3
-        }
-    ])
+   
     
 // title names adding to the keywords
-    await artPieces[1].addKeywordsAsync(["lanscape", "starry", "night", "houses"])
-    await artPieces[2].addKeywordsAsync(["abstract", "colorful", "shapes"])
-    await artPieces[3].addKeywordsAsync(["women", "smile", "portrait"])
-    await artPieces[4].addKeywordsAsync(["women", "portrait", "earring"])
-    await artPieces[5].addKeywordsAsync(["women", "sleep", "warm"])
-    await artPieces[6].addKeywordsAsync(["women", "seashell", "hair", "trees"])
-    await artPieces[7].addKeywordsAsync(["lanscape", "trees", "park", "trail"])
-    await artPieces[8].addKeywordsAsync(["abstract", "red", "faces"])
-    await artPieces[9].addKeywordsAsync(["lanscape", "women", "flower", "trees"])
-    await artPieces[10].addKeywordsAsync(["angels", "children", "flower"])
-    await artPieces[11].addKeywordsAsync(["buildings", "street", "landscape", "carriage"])
-    await artPieces[12].addKeywordsAsync(["lines", "abstract", "shapes"])
-    await artPieces[13].addKeywordsAsync(["abstract", "colorful", "bridge"])
-    await artPieces[14].addKeywordsAsync(["lanscape", "trees", "nature", "Ridgefield"])
-    await artPieces[15].addKeywordsAsync(["lanscape", "birds", "lake", "evening", "view"])
-    await artPieces[16].addKeywordsAsync(["time", "clock", "brown"])
-    await artPieces[17].addKeywordsAsync(["abstract", "lines", "yellow"])
-    await artPieces[18].addKeywordsAsync(["waterfront", "park", "women", "men", "grass"])
-    await artPieces[19].addKeywordsAsync(["angels", "bow and arrow", "flying"])
-    await artPieces[20].addKeywordsAsync(["dogs", "gamble", "poker", "cards"])
+    await artPieces[1].addKeywordsAsync(["lanscape", "starry night", "houses"])
+    await artPieces[2].addKeywordsAsync(["abstract", "colorful", "shapes", "random"])
+    await artPieces[3].addKeywordsAsync(["women", "smile", "portrait", "mona lisa"])
+    await artPieces[4].addKeywordsAsync(["women", "portrait", "earring", "Girl with a pearl earring"])
+    await artPieces[5].addKeywordsAsync(["women", "sleep", "warm", "Tibet girl" ])
+    await artPieces[6].addKeywordsAsync(["women", "seashell", "hair", "trees", "the birth of venus"])
+    await artPieces[7].addKeywordsAsync(["lanscape", "trees", "trail", "rain at the park"])
+    await artPieces[8].addKeywordsAsync(["abstract", "red", "faces", "L'amitie"])
+    await artPieces[9].addKeywordsAsync(["lanscape", "women", "flower", "trees", "poppies in a field"])
+    await artPieces[10].addKeywordsAsync(["angels", "children", "flower", "guardian Angel"])
+    await artPieces[11].addKeywordsAsync(["buildings", "street", "landscape", "carriage", "French theater square"])
+    await artPieces[12].addKeywordsAsync(["lines", "abstract", "shapes", "rich port"])
+    await artPieces[13].addKeywordsAsync(["abstract", "colorful", "bridge", "bridge to eternity"])
+    await artPieces[14].addKeywordsAsync(["lanscape", "trees", "nature", "nature walk in Ridgefield Washington"])
+    await artPieces[15].addKeywordsAsync(["lanscape", "birds", "lake", "evening", "alone now"])
+    await artPieces[16].addKeywordsAsync(["time", "clock", "brown", "The persistence of memory"])
+    await artPieces[17].addKeywordsAsync(["abstract", "lines", "yellow", "no 5, 1948"])
+    await artPieces[18].addKeywordsAsync(["waterfront", "park", "women", "grass", "A sunday afternoon on the island of La Grande Jatte"])
+    await artPieces[19].addKeywordsAsync(["angels", "bow and arrow", "The triumph of Galatea"])
+    await artPieces[20].addKeywordsAsync(["dogs", "gamble", "poker", "cards", "dogs playing poker"])
 
 
     console.log("seeded!")
