@@ -1,6 +1,6 @@
 document.querySelector("#submitCommentButton").addEventListener("click", (e)=>{
     e.preventDefault();
-    const textContent = document.querySelector("#commentInput").value;
+    const textContent = document.querySelector("#commentTextarea").value;
     if (!textContent){
         return;
     }
