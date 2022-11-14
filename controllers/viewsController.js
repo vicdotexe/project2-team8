@@ -253,14 +253,18 @@ router.get('/edit/:id',async(req,res)=>{
         return res.redirect('/signin')
     }
 
-    const artPiece = await ArtPiece.findByPk(req.params.id);
+    const artPiece = await ArtPiece.findByPk(req.params.id, {
+        include:Keyword
+    });
     if (artPiece.UserId != req.session.activeUser.id){
         return res.redirect('/signin')
     }
     const passedInObject = {
         activeUser: req.session.activeUser,
-        artPiece: artPiece.get({plain:true})
+        artPiece: artPiece.get({plain:true}),
+        keywords: artPiece.Keywords.map(keyword=> keyword.name).join(' ')
     }
+
 
     res.render('update-art', passedInObject)
 })

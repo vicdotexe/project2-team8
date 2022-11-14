@@ -19,7 +19,7 @@ body{
   .artpieces-container {
     display: flex;
     flex-flow: wrap;
-    justify-content: center;
+    justify-content: space-around;
     align-items:center;
   }
 
@@ -91,17 +91,19 @@ body{
 
   #dashboard{
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
   }
 
   #sidebar{
-    width:15%;
+    width:10rem;
     color:whitesmoke;
-
+    width:8rem;
+    min-width: 8rem;
   }
 
   #sidebar a{
     color:rgb(32, 112, 32);
+    
   }
 
   #dashboard-gallery{
