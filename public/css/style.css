@@ -19,7 +19,7 @@ body{
   .artpieces-container {
     display: flex;
     flex-flow: wrap;
-    justify-content: center;
+    justify-content: space-around;
     align-items:center;
   }
 
