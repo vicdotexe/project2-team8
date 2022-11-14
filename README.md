@@ -1,14 +1,15 @@
-# project2-team8
+# Renegade Art
 
 ## Table of Contents
 
-[Description](#description)
-[User Story](#user-story)
-[Acceptance Criteria](#acceptance-criteria)
-[Languages](#languages)
-[Usage](#usage)
-[Link to Website/ Screenshots](#app-screenshot-live-website-link)
-[Contact](#contact)
+- [Description](#description)
+- [User Story](#user-story)
+- [Acceptance Criteria](#acceptance-criteria)
+- [Languages](#languages)
+- [Usage](#usage)
+- [Deployed](#deployed)
+- [Screenshots](#screenshots)
+- [Contact](#contact)
 
 ## Description
 
@@ -42,17 +43,35 @@ JavaScript
 Handlebars
 CSS
 Tailwind
+Node/Express
+HTML
+Cloudinary
+MYSQL and Sequalize
 
 ## Usage
 
 For the user, the website just has to be visited. To view and comment or like art you do not have to be logged in or registered in any way. To add, remove or edit work you must be the artist of that art and logged in as such.
 For a user trying to deploy this app from VScode they should start by typing "nmp i" into their terminal. They should then start SQL and seed the data. Then the site can be opened.
 
-## Link to Website/ Screenshots
+## Deployed
 
-[Deployed Website](https://renegadeart-team8.herokuapp.com/)
+[Deployed Website.](https://renegadeart-team8.herokuapp.com/)
 
-![image](https://user-images.githubusercontent.com/113479475/200426082-754a8a33-557d-4145-82c3-c13cd2524b92.png)
+## Screenshots
+
+![Homepage with different art on display, ability to login.](public/screenshots/homepage.png)
+
+![Sign in page where you can also signup.](public/screenshots/sign-in-page.png)
+
+![A view of another artist gallery with their art on and name on display.](public/screenshots/viewing-another-artist-gallery.png)
+
+![Top half of view of someone else's art with their description, name, title and searchable keywords, and a comment box where the user can leave a comment.](public/screenshots/viewing-art-piece-top.png)
+
+![Bottom half of a view of someone else's art with a comment box mentioned in the top half and past comments and the name of the person who posted the comment.](public/screenshots/viewing-art-piece-bottom.png)
+
+![Logged in but viewing the homepage shows art by you, but also has a bar to the left displaying artist you are following and those following you, the login option is now a logout option. Below all of the art by you on display it has options to update or delete pieces.](public/screenshots/logged-in-view-dashboard.png)
+
+![The edit page reads "lets make some changes" at the top, shows the art as well as the description, keywords, and title.  But all three are in text boxes that whose content can be changed. Below those three boxes is a button that says submit changes.](public/screenshots/edit-page.png)
 
 ## Contact
 
