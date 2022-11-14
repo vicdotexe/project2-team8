@@ -1,12 +1,9 @@
-<section class="flex flex-col justify-around items-center w-80 h-96 bg-black rounded-xl m-3 p-3">
-    <div class="h-3/4 border border-black w-full">
-      <a href="/artPiece/{{id}}" >
-      <img src="{{path}}" alt="{{description}}">
-      </a>
-    </div>
+<section class="flex flex-col justify-around items-center w-80 h-80 bg-black rounded-xl m-3 p-3">
+    <a href="/artPiece/{{id}}"  class="flex items-center h-3/4 border border-black">
+      <img src="{{path}}" alt="{{description}}" class="max-h-full w-auto">
+    </a>
 
-    <div id="h-1/2">
+    <div id="h-1/4">
       <h5 class="font-bold">{{name}}</p>
-      <h6>- <a href="/gallery/{{User.id}}">{{User.username}}</a></h6>
     </div>
 </section>
