@@ -6,7 +6,7 @@
         
         <div id="watchingList">
             <h5 class="underline font-bold italic">Watched</h5>
-            <div class="flex column">
+            <div class="flex flex-col">
                 {{#each following as |watched|}}
                 <a href="/search?userid={{watched.id}}">{{watched.username}}</a>
                 {{/each}}
