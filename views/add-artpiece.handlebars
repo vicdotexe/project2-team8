@@ -1,18 +1,24 @@
-<div class="w-100 d-flex flex-column justify-content-center align-items-center" id ="add-artpiece">
-    <h1>Add new art piece to gallery </h1>
-    <div class="w-50" id="upload-art">
-        <form class="d-flex flex-column justify-content-center">
-            <img id="uploadedImg">
-            <div>
-                <input id="fileButton" type="file">
+<div class="w-100 flex flex-col justify-center items-center">
+    <h1 class="m-2 text-3xl">Add to your gallery </h1>
+    <div id="upload-art">
+        <form class="flex flex-col justify-center">
+
+            <div class="w-[80vw] min-h-[40vh] border flex justify-center items-center">
+                <img id="uploadedImg">
+            </div>
+            
+            <div class="my-2">
+                <input id="fileButton" class="file:bg-sky-500 file:py-1 file:px-2 file:rounded file:text-white" type="file">
                 <div id="spinner" class="spinner-border text-primary d-none" role="status">
                     <span class="sr-only">Loading...</span>
                 </div>
             </div>
-            <input id="name" type="text" name="name" placeholder="art piece name">
-            <textarea id="description" placeholder="description"></textarea>
-            <textarea id="add-art-keywords" placeholder="keywords - separete keywords with space"></textarea>
-            <button id="submitButton"> Submit</button>
+
+
+            <input id="name" class="my-1 p-2 rounded" type="text" name="name" placeholder="Title...">
+            <textarea id="description" class="my-1 p-2 rounded text-black"  placeholder="Description..."></textarea>
+            <textarea id="add-art-keywords" class="my-1 p-2 rounded text-black"  placeholder="Keywords (seperated by spaces)..."></textarea>
+            <button id="submitButton" class="my-1 p-2 bg-sky-500" > Submit</button>
         </form>
     </div>
 </div>

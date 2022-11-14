@@ -1,12 +1,12 @@
 <div id="dashboard">
-    <div id="sidebar">
-        <a href="/addartpiece"><button id="addWorkBtn"> Add New Work </button></a>
+    <div id="sidebar" class="bg-zinc-900">
+        <a href="/addartpiece"><button id="addWorkBtn"> Add New</button></a>
         <br>
-        <a href="/search?likedby={{activeUser.id}}"><button id="myLikedBtn"> My Liked Art </button></a>
+        <a href="/search?likedby={{activeUser.id}}"><button id="myLikedBtn"> My Likes </button></a>
         
         <div id="watchingList">
-            <h5 class="underline font-bold italic">Following artists </h5>
-            <div class="d-flex flex-column">
+            <h5 class="underline font-bold italic">Watched</h5>
+            <div class="flex column">
                 {{#each following as |watched|}}
                 <a href="/search?userid={{watched.id}}">{{watched.username}}</a>
                 {{/each}}
@@ -15,7 +15,7 @@
 
         <div id="followList" >
             <h5 class="underline font-bold italic">Followers</h5>
-            <div class="d-flex flex-column">
+            <div class="flex flex-col">
                 {{#each followers as |follower|}}
                 <a href="/search?userid={{follower.id}}">{{follower.username}}</a>
                 {{/each}}
@@ -31,7 +31,7 @@
                 {{>art-preview-card artPiece}}
             </div>
             <div class="flex flex-row justify-center">
-                <button class="border border-white mx-3 px-3" id="editBtn">Edit</button>
+                <a href="/edit/{{artPiece.id}}"><button class="border border-white mx-3 px-3" id="editBtn">Edit</button></a>
                 <button class="border border-white mx-3 px-3 removeBtn" artPId="{{artPiece.id}}">Remove</button>
             </div>
         </div>
