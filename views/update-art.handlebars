@@ -11,9 +11,9 @@
             <input id="name" class="my-1 p-2 rounded" type="text" name="name" placeholder="Title..." value="{{artPiece.name}}">
             <textarea id="description" class="my-1 p-2 rounded text-black"  placeholder="Description...">{{artPiece.description}}</textarea>
             <textarea id="add-art-keywords" class="my-1 p-2 rounded text-black"  placeholder="Keywords (seperated by spaces)...">{{keywords}}</textarea>
-            <button id="submitButton" class="my-1 p-2 bg-sky-500">Submit Changes</button>
+            <button id="submitButton" class="my-1 p-2 bg-sky-500" data-id="{{artPiece.id}}">Submit Changes</button>
         </form>
     </div>
 </div>
 
-<script src="/js/add-artpiece-script.js"></script>
+<script src="/js/update-artpiece-script.js"></script>
