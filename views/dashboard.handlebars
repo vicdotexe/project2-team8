@@ -31,7 +31,7 @@
                 {{>art-preview-card artPiece}}
             </div>
             <div class="flex flex-row justify-center">
-                <button class="border border-white mx-3 px-3" id="editBtn">Edit</button>
+                <a href="/edit/{{artPiece.id}}"><button class="border border-white mx-3 px-3" id="editBtn">Edit</button></a>
                 <button class="border border-white mx-3 px-3 removeBtn" artPId="{{artPiece.id}}">Remove</button>
             </div>
         </div>
