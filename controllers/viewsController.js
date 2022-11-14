@@ -1,9 +1,28 @@
 const express = require('express');
-const { ArtPiece,Keyword,User,Comment, Like, Relationship } = require('../models');
+const { ArtPiece,Keyword,User,Comment, Like, Relationship, ArtPieceKeyword } = require('../models');
 const router = express.Router();
 const sequelize = require('sequelize');
+const { Sequelize } = require('sequelize');
 
 
+async function GetTopKeywords(){
+    const apKeywords = await Keyword.findAll(
+        {
+            attributes:{
+                include:[[Sequelize.fn("COUNT", Sequelize.col("ArtPieceId")), "Count"]]
+            },
+            include: [{
+                model:ArtPiece
+            }],
+            group:['id'],
+            order:[['Count', 'DESC']]
+        }
+    )
+
+    const plainKeywords = apKeywords.map(x=>x.get({plain:true}));
+    const top5 = plainKeywords.slice(0,5).map(x=>x.name);
+    return top5;
+}
 
 router.get('/home', async (req,res)=>{
 
@@ -12,14 +31,15 @@ router.get('/home', async (req,res)=>{
             include:[User,Keyword, Like],
             order:sequelize.literal('updatedAt DESC')
         });
+        const plain = allPieces.map(x=>x.get({plain:true}))
 
-        const plain = allPieces.map(piece=>piece.get({plain:true}))
-        plain.forEach(piece=>{ piece.isLiked = req.session.activeUser ? piece.Likes.some(like=>like.UserId==req.session.activeUser.id) : false})
-
+        const top5 = await GetTopKeywords()
+        
         const passedInObject = {
             title: 'Recent Creations',
             activeUser: req.session.activeUser,
-            artPieces: plain
+            artPieces: plain,
+            topKeywords: top5
         }
     
         res.render('home', passedInObject)
@@ -43,11 +63,14 @@ router.get('/artpiece/:id', async (req,res)=>{
             }],
             
             });
-           
+
+            
+        const top5 = await GetTopKeywords()
         const passedInObject = {
             activeUser: req.session.activeUser,
             artPiece: artPiece.get({plain:true}),
-            isLiked: req.session.activeUser ? artPiece.Likes.some(like=>like.UserId==req.session.activeUser.id) : false
+            isLiked: req.session.activeUser ? artPiece.Likes.some(like=>like.UserId==req.session.activeUser.id) : false,
+            topKeywords: top5
         }
         
         console.log(passedInObject);
@@ -113,6 +136,9 @@ router.get('/search', async(req,res)=>{
             activeUser: req.session.activeUser,
             artPieces: plain
         } }
+
+        const top5 = await GetTopKeywords();
+        passedInObject.topKeywords = top5;
 
         passedInObject.showWatchButton = byUser != undefined;
         passedInObject.galleryId = byUser ? byUser.id : null;
@@ -198,6 +224,9 @@ router.get('/dashboard', async(req,res)=>{
             followers: myWatchersPlain.map(rel=>rel.Follower)
         }
 
+        const top5 = await GetTopKeywords();
+        passedInObject.topKeywords = top5;
+
         return res.render('dashboard', passedInObject);
     }else{
         return res.redirect('/signin')
@@ -229,8 +258,12 @@ router.get('/gallery/:id', async(req,res)=>{
     }
 })
 
-router.get('/signin',(req,res)=>{
-    res.render('signin');
+router.get('/signin',async (req,res)=>{
+    const top5 = await GetTopKeywords();
+
+    res.render('signin',{
+        topKeywords:top5
+    });
 })
 
 router.get('/logout', (req,res)=>{
@@ -239,13 +272,14 @@ router.get('/logout', (req,res)=>{
     });
 })
 
-router.get('/addartpiece',(req,res)=>{
+router.get('/addartpiece',async (req,res)=>{
     if (!req.session.activeUser){
 
     }
     const passedInObject = {
         activeUser: req.session.activeUser
     }
+    passedInObject.topKeywords = await GetTopKeywords();
     res.render('add-artpiece', passedInObject)
 })
 router.get('/edit/:id',async(req,res)=>{
@@ -264,7 +298,7 @@ router.get('/edit/:id',async(req,res)=>{
         artPiece: artPiece.get({plain:true}),
         keywords: artPiece.Keywords.map(keyword=> keyword.name).join(' ')
     }
-
+    passedInObject.topKeywords = await GetTopKeywords();
 
     res.render('update-art', passedInObject)
 })
