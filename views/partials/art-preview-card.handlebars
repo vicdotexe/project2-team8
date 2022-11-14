@@ -1,12 +1,9 @@
-<section class="card">
-  <a href="/artPiece/{{id}}" >
-    <div class="img-part">
-      <img src="{{path}}" alt="{{description}}">
+<section class="flex flex-col justify-around items-center w-80 h-80 bg-black rounded-xl m-3 p-3">
+    <a href="/artPiece/{{id}}"  class="flex items-center h-3/4 border border-black">
+      <img src="{{path}}" alt="{{description}}" class="max-h-full w-auto">
+    </a>
+
+    <div id="h-1/4">
+      <h5 class="font-bold">{{name}}</p>
     </div>
-    <div id="info">
-      <p>{{name}}</p>
-      <a href="/gallery/{{User.id}}">
-      <p>By {{User.username}}</p> </a> Created: {{createdAt}} </p>
-    </div>
-  </a>
 </section>

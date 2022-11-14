@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "seed": "node seeds/seed.js"
+    "seed": "node seeds/seed.js",
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
@@ -29,5 +30,8 @@
     "lorem-ipsum": "^2.0.8",
     "mysql2": "^2.3.3",
     "sequelize": "^6.25.5"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.2.4"
   }
 }

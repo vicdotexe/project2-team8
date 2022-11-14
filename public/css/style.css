@@ -1,7 +1,12 @@
 /* for home, signin, art-preview, gallary, dashboard, add-artPiece */ 
-
+:root{
+  --rockSalt: 'Rock Salt', cursive;
+  --sono: 'Sono', sans-serif;
+  --montserrat: 'Montserrat', sans-serif;
+}
 *{
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--montserrat);
+  color:white;
 }
 
 body{
@@ -14,7 +19,7 @@ body{
   .artpieces-container {
     display: flex;
     flex-flow: wrap;
-    justify-content: center;
+    justify-content: space-around;
     align-items:center;
   }
 
@@ -54,8 +59,8 @@ body{
   }
 
   img {
-    max-width: 100%;
-    height:100%;
+    max-width: 380px;
+    max-height: 380px;
    }
 
  .img-part{
@@ -83,14 +88,22 @@ body{
   button{
     border-radius: 5px;
   }
+
   #dashboard{
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
   }
 
   #sidebar{
-    width:15%;
+    width:10rem;
     color:whitesmoke;
+    width:8rem;
+    min-width: 8rem;
+  }
+
+  #sidebar a{
+    color:rgb(32, 112, 32);
+    
   }
 
   #dashboard-gallery{
@@ -98,14 +111,33 @@ body{
   }
 
   #addWorkBtn{
-    margin: 10px;
-    background-color: lightgoldenrodyellow;
+    margin: 15px;
+    background-color: whitesmoke;
+    padding: 4px 4px;
+  }
+
+  #myLikedBtn{
+    margin: 15px;
+    background-color: whitesmoke;
+    padding: 4px 4px;
   }
 
   h5{
     margin: 10px;
   }
 
+  #watchingList{
+    margin: 10px;
+    margin-left: 15px;
+    padding-bottom: 15px;
+
+  }
+
+  #followList{
+    margin: 10px;
+    margin-left: 15px;
+    padding-bottom: 15px;
+  }
   #add-artpiece{
     color:whitesmoke;
   }
@@ -114,3 +146,20 @@ body{
     margin:20px;
     margin-top: 50px;
   }
+
+  .art-description p {
+    color: black;
+  }
+
+  .recent-comments p {
+    color: black;
+  }
+  
+  input {
+    color: black !important;
+  }
+
+  #commentInput {
+    width: 57vw;
+  }
+ 

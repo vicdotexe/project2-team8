@@ -1,43 +1,19 @@
-<div class="art-piece">
-    <div class="main-image">
-        <img src="{{artPiece.path}}" > 
-    </div>
+<div class="w-100 flex flex-col justify-center items-center">
+    <h1 class="m-2 text-3xl">Let's make some changes.</h1>
+    <div id="upload-art">
+        <form class="flex flex-col justify-center">
 
-    <div class="image-info">
-        <h3 class="artist-name">Artist:{{artPiece.artist}}</h3>
-        <h3 class="art-name">Piece name: </h3>
-        {{!-- <h3>Genre of art:{{artPiece.genre}}</h3> --}}
-    </div>
-    <div class="input-group">
-    <div class="input-group-prepend">
-        <textarea id="commentInput" class="form-control" aria-label="With textarea"></textarea>
-        <button id="submitCommentButton" artId="{{artPiece.id}}" class="title-input-group-text-comment">Change Title?</button>
-    </div>
-    </div>
-    <div class="input-group">
-    <div class="input-group-prepend">
-        <textarea id="commentInput" class="form-control" aria-label="With textarea"></textarea>
-        <button id="submitCommentButton" artId="{{artPiece.id}}" class="description-input-group-text-comment">Add Description</button>
-    </div>
-    </div>
-   
-        </ul>{{artPiece.description}}</div>
-        <div class="input-group">
-    <div class="input-group-prepend">
-        <textarea id="commentInput" class="form-control" aria-label="With textarea"></textarea>
-        <button id="submitCommentButton" artId="{{artPiece.id}}" class="keyword-input-group-text-comment">Add Keywords</button>
-    </div>
-    </div>
+            <div class="w-[80vw] min-h-[40vh] border flex justify-center items-center">
+                <img src="{{artPiece.path}}">
+            </div>
 
-    <div class="art-piece-keyword">Keywords:
-        {{#each artPiece.Keywords as |keyword|}}
-        {{keyword.name}}
-        {{/each}}
-        </div>
 
-    
+            <input id="name" class="my-1 p-2 rounded" type="text" name="name" placeholder="Title..." value="{{artPiece.name}}">
+            <textarea id="description" class="my-1 p-2 rounded text-black"  placeholder="Description...">{{artPiece.description}}</textarea>
+            <textarea id="add-art-keywords" class="my-1 p-2 rounded text-black"  placeholder="Keywords (seperated by spaces)...">{{keywords}}</textarea>
+            <button id="submitButton" class="my-1 p-2 bg-sky-500" data-id="{{artPiece.id}}">Submit Changes</button>
+        </form>
     </div>
 </div>
 
-<script src="/js/commentSubmission.js" ></script>
-<script src="/js/likeHandler.js" ></script>
+<script src="/js/update-artpiece-script.js"></script>

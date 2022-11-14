@@ -1,0 +1,15 @@
+
+#navLinks{
+
+}
+
+.nav-item{
+margin: 1rem 1rem 0 1rem;
+}
+.nav-link{
+    white-space: nowrap;
+}
+
+.nav-link:hover{
+    color:rgb(22, 138, 206);
+}

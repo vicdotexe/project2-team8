@@ -1,12 +1,12 @@
 const express = require('express');
-const { ArtPiece, Keyword, User} = require('../../models');
+const { ArtPiece, Keyword, User, Like} = require('../../models');
 const router = express.Router();
 const sequalize = require('sequelize');
 
 router.get("/", async(req,res)=>{
     try{
         const artPieces = await ArtPiece.findAll({
-            include:[Keyword,User],
+            include:[Keyword,User, Like],
             order:sequalize.literal('updatedAt DESC')
             });
         const artPiecesPlain = artPieces.map(piece => piece.get({plain:true}));

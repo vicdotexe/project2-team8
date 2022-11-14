@@ -1,56 +1,55 @@
-<div class="art-piece">
-    <div class="main-image">
-        <img src="{{artPiece.path}}" > 
-    </div>
+<div class="w-full flex flex-col items-center mt-5">
+    
+    <div class="w-[75%] flex flex-col items-center bg-zinc-900 p-4 rounded">
+        <img class="max-h-[40ch]" src="{{artPiece.path}}" > 
+        <div class="flex flex-col mt-3 w-full">
+            <div class="flex justify-between w-full">
+                <div>
+                <h3 class="text-lg font-bold">{{artPiece.name}}</h3>
+                <a href="/search?userid={{artPiece.User.id}}" class="text-sky-200 hover:text-sky-500 self-start ml-2">- {{artPiece.User.username}}</a>
+                </div>
 
-    <div class="image-info">
-         <h3 class="art-name">Piece name: {{artPiece.name}}</h3>
-        <button id="likeButton" data-artId="{{artPiece.id}}" class="btn btn-primary" type="submit" data-liked="{{isLiked}}">
-        {{#if isLiked}}
-        Unlike
-        {{else}}
-        Like
-        {{/if}}
-        </button>
-    </div>
-    <button class="like-count-button" LikeCount:{{artPiece.Likes.length}}>
-    </button>
-    <div class="artist-name-keyword">
-        <h3>Artist:{{artPiece.User.username}} </h3>
-        <div class="art-piece-keyword">Keywords:
-        {{#each artPiece.Keywords as |keyword|}}
-        {{keyword.name}}
-        {{/each}}
-    </div>
+                <div id="likeButton" class="hover:text-sky-500 star cursor-pointer" data-artId="{{artPiece.id}}" 
+                data-liked="{{#if isLiked}}true{{else}}false{{/if}}">
+                {{#if isLiked}}★{{else}}✩{{/if}} {{artPiece.Likes.length}}</div>
+            
+            </div>
 
-      
-        {{!-- <h3>Genre of art:{{artPiece.genre}}</h3> --}}
-    </div>
-    <div class="art-description">Description:
-        <p>{{artPiece.description}}
-        </p>
-    </div>
+            <p class="mt-2"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;{{artPiece.description}}</p>
+            <div class="self-end mt-2 text-sm text-zinc-300">Keywords: &nbsp;&nbsp;
+                {{#each artPiece.Keywords as |keyword|}}
+                <a href="/search?keywords={{keyword.name}}" class="hover:text-sky-500">{{keyword.name}}</a> &nbsp;&nbsp;
+                {{/each}}
+                </div>
+        </div>
 
+        <div class="mx-12 mt-4 w-full">
+            <form class="flex flex-col">
+                <textarea id="commentTextarea" class="rounded text-black p-2 bg-zinc-200" aria-label="With textarea" placeholder="Write a comment..."></textarea>
+                <button id="submitCommentButton" artId="{{artPiece.id}}" class="self-end bg-sky-500 rounded p-1 mt-2">Add Comment</button>
+            </form>
 
-    <div class="input-group">
-    <div class="input-group-prepend-comment">
-        <textarea id="commentInput" class="form-control" aria-label="With textarea"></textarea>
-        <button id="submitCommentButton" artId="{{artPiece.id}}" class="input-group-text-comment">Add Comment</button>
-    </div>
-    </div>
+            <div class="flex flex-col w-full mt-3">
+                {{#if artPiece.Comments.length}}
+                <h3>Comments -</h3>
+                <div class="recent-comments bg-zinc-400 p-2">
+                    <ul>
+                        {{#each artPiece.Comments as |comment|}}
+                            <li>
+                                <div class="px-3 my-2">
+                                    <p>{{comment.content}}</p>
+                                    <a class="text-zinc-200 w-full" href="/search?userid={{comment.User.id}}">- {{comment.User.username}}</a>
+                                </div>
+                            </li>
+                        {{/each}}
+                    </ul>
+                </div>
+                {{else}}
+                <h3>Be the first to leave a comment!</h3>
+                {{/if}}
+            </div>
 
-
-    <div class="recent-comments">Recent comments:
-        <ul>
-            {{#each artPiece.Comments as |comment|}}
-                <li>
-                    <div>
-                        <h6>From: {{comment.User.username}}</h4>
-                        <p>{{comment.content}}</p>
-                    </div>
-                </li>
-            {{/each}}
-        </ul>
+        </div>
     </div>
 </div>
 
