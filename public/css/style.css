@@ -102,24 +102,27 @@ body{
   }
 
   #sidebar a{
-    color:rgb(32, 112, 32);
+    color:rgb(28, 129, 196);
     
   }
 
-  #dashboard-gallery{
-    width: 80%;
+  #sidebar a:hover{
+    color:rgb(128, 194, 238);
+    
   }
 
   #addWorkBtn{
     margin: 15px;
     background-color: whitesmoke;
     padding: 4px 4px;
+    font-weight: bold;
   }
 
   #myLikedBtn{
     margin: 15px;
     background-color: whitesmoke;
     padding: 4px 4px;
+    font-weight: bold;
   }
 
   h5{
