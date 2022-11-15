@@ -54,7 +54,7 @@ document.querySelector("#submitButton").addEventListener("click", (e)=>{
     aData.keywords = document.querySelector("#add-art-keywords").value.split(' ');
 
     if (!aData.path || !aData.name || ! aData.description || !aData.keywords){
-        alert("Must include atleast an image, name, description, and keywords");
+        Alert("Must include atleast an image, name, description, and keywords");
         return;
     }
     fetch('/api/artpieces',{
