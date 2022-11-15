@@ -32,7 +32,8 @@ router.get('/home', async (req,res)=>{
             order:sequelize.literal('updatedAt DESC')
         });
         const plain = allPieces.map(x=>x.get({plain:true}))
-
+        plain.forEach(piece=>{ piece.isLiked = req.session.activeUser ? piece.Likes.some(like=>like.UserId==req.session.activeUser.id) : false})
+        
         const top5 = await GetTopKeywords()
         
         const passedInObject = {
