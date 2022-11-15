@@ -1,12 +1,16 @@
 const uploadImageButton = document.querySelector("#uploadImageButton");
 const fileButton = document.querySelector("#fileButton");
 const spinner = document.querySelector('#spinner');
+
 const aData={}
+let prevValue = fileButton.value;
 
 fileButton.addEventListener("change", async(e) => {
     e.preventDefault();
-    spinner.classList.remove('d-none');
-    spinner.classList.add('d-inline-block');
+    if (e.target.value == prevValue){
+        return;
+    }
+    spinner.classList.remove('hidden');
     
     const signResponse = await fetch('/api/images/signature');
     const {signature,timestamp,apikey,cloudname} = await signResponse.json();
@@ -32,14 +36,13 @@ fileButton.addEventListener("change", async(e) => {
         })
         .then((response) => {
             console.log(response);
+
             return response.json();
         })
         .then((data) => {
             console.log(data)
             aData.path = data.url;
             document.querySelector('#uploadedImg').setAttribute("src", data.url);
-            spinner.classList.remove('d-inline-block');
-            spinner.classList.add('d-none');
         });
     }
 });
@@ -77,3 +80,7 @@ document.querySelector("#submitButton").addEventListener("click", (e)=>{
         document.location.replace(`/home`)
     });
 });
+
+document.querySelector("#uploadedImg").addEventListener("load", (e)=>{
+    document.querySelector("#spinner").classList.add("hidden");
+})
